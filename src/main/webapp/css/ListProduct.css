@@ -1,0 +1,93 @@
+th, td {
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+}
+
+#button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+button {
+    margin-bottom: 10px;
+    width: 90%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+#button:hover {
+    background-color: #0056b3;
+}
+
+th:nth-child(1) {
+    width: 5%;
+}
+
+th:nth-child(2), td:nth-child(2) {
+    width: 15%;
+    overflow: hidden;
+}
+
+th:nth-child(3), td:nth-child(3) {
+    width: 15%;
+}
+
+th:nth-child(4), td:nth-child(4) {
+    width: 8%;
+}
+
+th:nth-child(5), td:nth-child(5) {
+    width: 5%;
+}
+
+th:nth-child(6), td:nth-child(6) {
+    width: 10%;
+}
+
+th:nth-child(7), td:nth-child(7) {
+    width: 25%;
+}
+
+th:nth-child(8), td:nth-child(8) {
+    width: 10%;
+}
+
+th:nth-child(9), td:nth-child(9) {
+    width: 12%;
+}
+
+td img {
+    max-width: 90%;
+    height: auto;
+}
+h1 {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+#left{
+    text-align: center;
+    padding: 10px;
+    width: 18%;
+    float: left;
+    height: 98%;
+    background: #c8e364;
+    flex-direction: column;
+}
