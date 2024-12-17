@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class ConnectionData {
     private static String URL = "jdbc:mysql://127.0.0.1:3306/Web_QuanLyBanQuanAo_JSP";
     private static String userName = "root";
-    private static String pass = "1962005";
+    private static String pass = "tamtamtam";
 
     public ConnectionData() {
     }
