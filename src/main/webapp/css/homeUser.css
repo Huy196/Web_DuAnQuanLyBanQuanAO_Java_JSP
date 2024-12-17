@@ -1,0 +1,168 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #fff;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+}
+
+td {
+    vertical-align: middle;
+    padding: 10px;
+}
+
+/* Logo */
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* Menu */
+.menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    margin: 0 15px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 0.3s;
+    position: relative;
+}
+
+.menu li:hover {
+    color: #f90;
+}
+
+/* Menu Items */
+.menu li:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    max-height: none;
+    z-index: 1;
+    padding: 10px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+}
+
+.dropdown-content a:hover {
+    background-color: #d9d3d3;
+    color: #ff9900;
+}
+
+/* Search and Cart Section */
+.search-cart {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+/* Input Styles */
+input[type="text"] {
+    padding: 8px 15px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    width: 300px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+    width: 400px;
+    border-color: #007bff;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+    background-color: #fff;
+}
+
+/* Search Button */
+.search-btn {
+    background-color: #ffffff;
+    border: none;
+    cursor: pointer;
+    font-size: 30px;
+    padding: 8px 15px;
+    border-radius: 50%;
+    margin-left: 10px;
+    transition: background-color 0.3s;
+}
+
+.search-btn:hover {
+    background-color: #ffffff;
+    color: #ffffff;
+}
+
+/* Cart Icon */
+.cart {
+    font-size: 30px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+/* Adjustments for better UI appearance */
+.   menu li {
+    padding: 10px;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.menu li:hover {
+    background-color: #fafafa;
+    border-radius: 5px;
+}
+
+/* Responsive Design: Adjust the size of input and buttons on smaller screens */
+@@media screen and (max-width: 768px) {
+    .menu {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu li {
+        margin-bottom: 10px;
+    }
+
+    .search-cart {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    input[type="text"] {
+        width: 250px;
+    }
+
+    .search-btn {
+        font-size: 25px;
+    }
+
+    .cart {
+        font-size: 25px;
+        margin-top: 10px;
+    }
+}
