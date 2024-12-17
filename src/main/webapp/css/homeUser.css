@@ -5,164 +5,253 @@
     font-family: Arial, sans-serif;
 }
 
-body {
-    background-color: #fff;
-}
 
-/* Table */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    border: 1px solid #ccc;
-}
+html, body {
+    overflow-x: hidden; /* Ẩn cuộn ngang */
+    max-width: 100%; /* Giới hạn độ rộng */
 
-td {
-    vertical-align: middle;
-    padding: 10px;
-}
 
-/* Logo */
-.logo {
-    font-size: 20px;
-    font-weight: bold;
-    white-space: nowrap;
-}
+    body {
+        background-color: #fff;
+    }
 
-/* Menu */
-.menu {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-}
+    /* Table */
 
-.menu li {
-    margin: 0 15px;
-    font-size: 20px;
-    cursor: pointer;
-    transition: color 0.3s;
-    position: relative;
-}
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid #ccc;
+    }
 
-.menu li:hover {
-    color: #f90;
-}
+    td {
+        vertical-align: middle;
+        padding: 10px;
+    }
 
-/* Menu Items */
-.menu li:hover .dropdown-content {
-    display: block;
+    /* Logo */
+
+    .logo {
+        font-size: 20px;
+        font-weight: bold;
+        white-space: nowrap;
+    }
+
+    /* Menu */
+
+    .menu {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .menu li {
+        margin: 0 15px;
+        font-size: 20px;
+        cursor: pointer;
+        transition: color 0.3s;
+        position: relative;
+    }
+
+    .menu li:hover {
+        color: #f90;
+    }
+
+    .menu li:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        max-height: none;
+        z-index: 1;
+        padding: 10px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 8px 16px;
+        text-decoration: none;
+        display: block;
+        font-size: 16px;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #d9d3d3;
+        color: #ff9900;
+    }
+
+    .search-cart {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    input[type="text"] {
+        padding: 8px 15px;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        width: 300px;
+        outline: none;
+        transition: all 0.3s ease;
+    }
+
+    input[type="text"]:focus {
+        width: 400px;
+        border-color: #007bff;
+        box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+        background-color: #fff;
+    }
+
+    /* Search Button */
+
+    .search-btn {
+        background-color: #ffffff;
+        border: none;
+        cursor: pointer;
+        font-size: 30px;
+        padding: 8px 15px;
+        border-radius: 50%;
+        margin-left: 10px;
+        transition: background-color 0.3s;
+    }
+
+    .search-btn:hover {
+        background-color: #ffffff;
+        color: #ffffff;
+    }
+
+    /* Cart Icon */
+
+    .cart {
+        font-size: 30px;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+
+    /* Adjustments for better UI appearance */
+
+    .menu li {
+        padding: 10px;
+        transition: color 0.3s, background-color 0.3s;
+    }
+
+    .menu li:hover {
+        background-color: #fafafa;
+        border-radius: 5px;
+    }
+
+    /* Responsive Design: Adjust the size of input and buttons on smaller screens */
+    @media screen and (max-width: 768px) {
+        .menu {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .menu li {
+            margin-bottom: 10px;
+        }
+
+        .search-cart {
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        input[type="text"] {
+            width: 250px;
+        }
+
+        .search-btn {
+            font-size: 25px;
+        }
+
+        .cart {
+            font-size: 25px;
+            margin-top: 10px;
+        }
+    }
+
+    #logoutBtn {
+        background-color: #f44336;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        width: 100%;
+        text-align: center;
+        border-radius: 3px;
+    }
+
+    #logoutBtn:hover {
+        background-color: #d32f2f;
+    }
+
+    /* Show dropdown content when active */
+
+    .user-dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .user-icon {
+        font-size: 30px;
+
+    }
 }
 
 .dropdown-content {
     display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    max-height: none;
-    z-index: 1;
-    padding: 10px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 8px 16px;
-    text-decoration: none;
-    display: block;
-    font-size: 16px;
-}
-
-.dropdown-content a:hover {
-    background-color: #d9d3d3;
-    color: #ff9900;
-}
-
-/* Search and Cart Section */
-.search-cart {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-/* Input Styles */
-input[type="text"] {
-    padding: 8px 15px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    width: 300px;
-    outline: none;
-    transition: all 0.3s ease;
-}
-
-input[type="text"]:focus {
-    width: 400px;
-    border-color: #007bff;
-    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+    position: relative;
+    top: 70px;
+    right: 0;
     background-color: #fff;
-}
-
-/* Search Button */
-.search-btn {
-    background-color: #ffffff;
-    border: none;
-    cursor: pointer;
-    font-size: 30px;
-    padding: 8px 15px;
-    border-radius: 50%;
-    margin-left: 10px;
-    transition: background-color 0.3s;
-}
-
-.search-btn:hover {
-    background-color: #ffffff;
-    color: #ffffff;
-}
-
-/* Cart Icon */
-.cart {
-    font-size: 30px;
-    cursor: pointer;
-    margin-left: 10px;
-}
-
-/* Adjustments for better UI appearance */
-.   menu li {
+    width: 200px;
+    z-index: 10;
     padding: 10px;
-    transition: color 0.3s, background-color 0.3s;
+    overflow: hidden; /* Đảm bảo không tràn nội dung */
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.menu li:hover {
-    background-color: #fafafa;
-    border-radius: 5px;
+/*chuyen anh*/
+/* Tùy chỉnh chiều cao và hiển thị hình ảnh */
+.carousel-inner img {
+    height: 500px; /* Điều chỉnh chiều cao của ảnh */
+    object-fit: cover; /* Ảnh giữ tỉ lệ và không bị méo */
 }
 
-/* Responsive Design: Adjust the size of input and buttons on smaller screens */
-@media screen and (max-width: 768px) {
-    .menu {
-        flex-direction: column;
-        align-items: center;
-    }
+/* Hiệu ứng chuyển đổi ảnh mượt mà */
+.carousel-inner .carousel-item {
+    transition: transform 1s ease-in-out; /* Tạo chuyển động mượt */
+}
 
-    .menu li {
-        margin-bottom: 10px;
-    }
+/* Tùy chỉnh nút điều hướng (Previous và Next) */
+.carousel-control-prev, .carousel-control-next {
+    width: 5%; /* Giảm kích thước chiều rộng */
+}
 
-    .search-cart {
-        flex-direction: column;
-        align-items: flex-end;
-    }
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5); /* Nền mờ cho nút */
+    border-radius: 50%; /* Làm tròn nút */
+    padding: 10px; /* Tăng kích thước của biểu tượng */
+}
 
-    input[type="text"] {
-        width: 250px;
-    }
+/* Hiệu ứng hover nút điều hướng */
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.8); /* Đậm màu khi rê chuột vào */
+    transition: background-color 0.3s ease; /* Hiệu ứng màu mượt mà */
+}
 
-    .search-btn {
-        font-size: 25px;
-    }
+/* Tùy chỉnh các chấm chỉ báo */
+.carousel-indicators li {
+    background-color: rgba(0, 0, 0, 0.5); /* Màu nền các chấm */
+}
 
-    .cart {
-        font-size: 25px;
-        margin-top: 10px;
-    }
+.carousel-indicators .active {
+    background-color: rgba(0, 0, 0, 0.8); /* Màu nền cho chấm đang hoạt động */
 }
