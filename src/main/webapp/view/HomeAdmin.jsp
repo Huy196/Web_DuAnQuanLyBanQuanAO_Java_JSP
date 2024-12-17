@@ -10,18 +10,17 @@
 <head>
     <title>Xin chào Admin</title>
     <link rel="stylesheet" href="/css/HomeAdmin.css">
+    <script src="/js/LoadDataProduct.js"></script>
 </head>
 <body>
-    <div id="left">
-        <button name="Trang chủ">Trang chủ</button>
-        <button name="Sản Phẩm">Sản phẩm</button>
+    <div id="left" >
+        <button onclick="loadHome()" name="Trang chủ">Trang chủ</button>
+        <button onclick="loadProductPage()">Sản phẩm</button>
         <button name="Người Dùng">Người dùng</button>
         <button name="Đăng Xuất">Đăng xuất</button>
-
     </div>
-    <div id="centent">
-
+    <div id="content" class="centent" >
+        <img id="image" src="https://gotrangtri.vn/wp-content/uploads/2020/06/b%C3%ACa3.jpg" style="width: 98%;height: 100% ;padding: 10px">
     </div>
-
 </body>
 </html>
