@@ -14,10 +14,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/css/ListProduct.css">
+    <%--    <link rel="stylesheet" href="/css/ListProduct.css">--%>
+    <link rel="stylesheet" href="/css/List.css">
+    <script src="/js/LoadDataProduct.js"></script>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 </head>
-<body style="width: 77%">
-<h1 style="text-align: center;font-size: 3.0rem">Danh sách sản phẩm</h1> <br>
+<body style="width: 98%;padding: 15px">
+<h1 style="text-align: center;font-size: 4.0rem">Danh sách sản phẩm</h1> <br>
 <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 20px; margin-top: -20px">
     <div style="display: flex; align-items: center; gap: 10px;">
         <input type="text" placeholder="Nhập từ khóa..."
@@ -27,41 +31,49 @@
             Tìm kiếm
         </button>
     </div>
-    <div>
-        <button id="button" type="submit"
-                style="width: 200px;margin-left: 820px; background-color: #28A745; color: white; font-size: 16px;
+    <form action="/products?action=add">
+        <div>
+            <button id="button" type="submit"
+                    style="width: 200px;margin-left: 820px; background-color: #28A745; color: white; font-size: 16px;
                 border: none; border-radius: 5px; cursor: pointer;margin-top: -74px;">
-            Thêm sản phẩm
-        </button>
-    </div>
+                Thêm sản phẩm
+            </button>
+        </div>
+    </form>
+
+        <div>
+            <button onclick="loadHome()" type="button"
+                    style="width: 200px;margin-left: 1200px; background-color: #28A745; color: white; font-size: 16px;
+                border: none; border-radius: 5px; cursor: pointer;margin-top: -110px;">
+                Quay lai trang chủ
+            </button>
+        </div>
+
 </div>
-<table style="margin-top: -20px" class="table" width="70%">
+<table style="margin-top: -35px">
     <thead>
     <tr>
-        <th id="" scope="col">STT</th>
-        <th scope="col">Hình ảnh</th>
-        <th scope="col">Tên sản phầm</th>
-        <th scope="col">Giá</th>
-        <th scope="col">Size</th>
-        <th scope="col">Số lượng</th>
-        <th scope="col">Mô tả</th>
-        <th scope="col">Trạng thái</th>
-        <th scope="col">Chức Năng</th>
+        <th>STT</th>
+        <th >Hình ảnh</th>
+        <th >Tên sản phầm</th>
+        <th>Giá</th>
+        <th>Số lượng</th>
+        <th>Mô tả</th>
+        <th>Trạng thái</th>
+        <th>Chức Năng</th>
     </tr>
     </thead>
-    <c:forEach var="user" items="${users}">
+    <c:forEach var="products" items="${products}">
         <tr>
-            <td><c:out value="${user.id}"/></td>
-            <td><c:out value="${user.image}"/></td>
-            <td><c:out value="${user.name}"/></td>
-            <td><c:out value="${user.price}"/></td>
-            <td><c:out value="${user.size}"/></td>
-            <td><c:out value="${user.quantity}"/></td>
-            <td><c:out value="${user.description}"/></td>
-            <td><c:out value="${user.status}"/></td>
+            <td><c:out value="${products.id}"/></td>
+            <td><img src="${products.image}" width="100px" height="100px"></td>
+            <td><c:out value="${products.name}"/></td>
+            <td><c:out value="${products.price}"/></td>
+            <td><c:out value="${products.quantity}"/></td>
+            <td><c:out value="${products.description}"/></td>
+            <td><c:out value="${products.status}"/></td>
             <td>
-                <a href="/users?action=edit&id=${user.id}">Edit</a>
-                <a href="/users?action=delete&id=${user.id}">Delete</a>
+                <a href="/products?action=edit&id=${products.id}">Sửa</a>
             </td>
         </tr>
     </c:forEach>
