@@ -1,5 +1,6 @@
 package com.example.duanquanlybansach_java_jsp.controller.Admin;
 
+import com.example.duanquanlybansach_java_jsp.ConnectionData;
 import com.example.duanquanlybansach_java_jsp.model.Product;
 import com.example.duanquanlybansach_java_jsp.model.User;
 import com.example.duanquanlybansach_java_jsp.service.ProductDAO;
@@ -11,6 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -31,20 +35,57 @@ public class ProductSevrlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
+        resp.setCharacterEncoding("UTF-8");
         String action = req.getParameter("action");
         if (action == null || action.trim().isEmpty()) {
             action = " ";
         }
         switch (action) {
             case "search":
-                searchProductByName(req, resp);
+                try {
+                    searchProductByName(req, resp);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                } catch (ClassNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
+                break;
+            case "add":
+                try {
+                    addProduct(req,resp);
+                } catch (SQLException | ClassNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
+                break;
+
+            case "interfaceAdd":
+                req.getRequestDispatcher("/view/AddProduct.jsp").forward(req, resp);
                 break;
         }
 
+
+    }
+
+    private void addProduct(HttpServletRequest req, HttpServletResponse resp) throws SQLException, ServletException, IOException, ClassNotFoundException {
+        String name = req.getParameter("name");
+        BigDecimal price = new BigDecimal(req.getParameter("price"));
+        String size = req.getParameter("size");
+        int quantity = Integer.parseInt(req.getParameter("quantity"));
+        String description = req.getParameter("description");
+        String urlImage = req.getParameter("image");
+
+        Product product = new Product(name,price,size,quantity,description,urlImage);
+
+        productDAO.insertProduct(product);
+
+        listAllProduct(req,resp);
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
+        resp.setCharacterEncoding("UTF-8");
         String action = req.getParameter("action");
 
         if (action == null || action.trim().isEmpty()) {
@@ -52,12 +93,12 @@ public class ProductSevrlet extends HttpServlet {
         }
 
         switch (action) {
-            case "add":
-                System.out.println("hehe");
-                break;
+
             case "home":
                 req.getRequestDispatcher("/view/HomeAdmin.jsp").forward(req, resp);
                 break;
+
+
 
             case "delete":
                 try {
@@ -69,12 +110,18 @@ public class ProductSevrlet extends HttpServlet {
                 }
                 break;
             default:
-                listAllProduct(req, resp);
+                try {
+                    listAllProduct(req, resp);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                } catch (ClassNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
                 break;
         }
     }
 
-    private void searchProductByName(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    private void searchProductByName(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException, ClassNotFoundException {
         String name = req.getParameter("text");
 
         List<Product> products = productDAO.searchName(name);
@@ -95,9 +142,18 @@ public class ProductSevrlet extends HttpServlet {
         listAllProduct(req, resp);
     }
 
-    private void listAllProduct(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    private void listAllProduct(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException, ClassNotFoundException {
         List<Product> products = productDAO.selectAllProduct();
         req.setAttribute("products", products);
+
+
+        String sql = "{CALL update_status_when_quantity_zero()}";
+
+        Connection connection = ConnectionData.connection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+        preparedStatement.executeUpdate(sql);
+
         RequestDispatcher dispatcher = req.getRequestDispatcher("/view/ListProduct.jsp");
         dispatcher.forward(req, resp);
     }

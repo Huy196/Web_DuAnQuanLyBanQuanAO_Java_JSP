@@ -15,11 +15,35 @@ public class ProductDAO implements IDProduct {
     private static final String Search_Products = "select * from product where Name like ?";
     private static final String Update_Product_By_Id = "update product set Status = false where IDproduct = ?";
 
+    private static final String Inser_into_Product = "INSERT INTO Product (Name, Price, Size, Quantity, Description, Image, Status) VALUES (?,?,?,?,?,?, IF(Quantity > 0, 1, 0))";
+
     public ProductDAO() throws SQLException, ClassNotFoundException {
     }
 
     @Override
     public void insertProduct(Product product) throws SQLException {
+        try {
+            Connection connection = ConnectionData.connection();
+
+            PreparedStatement preparedStatement = connection.prepareStatement(Inser_into_Product);
+            preparedStatement.setString(1,product.getName());
+            preparedStatement.setBigDecimal(2,product.getPrice());
+            preparedStatement.setString(3,product.getSize());
+            preparedStatement.setInt(4,product.getQuantity());
+            preparedStatement.setString(5,product.getDescription());
+            preparedStatement.setString(6,product.getImage());
+
+            int row = preparedStatement.executeUpdate();
+            if (row>0){
+                System.out.println("Thành công");
+            }
+
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
@@ -46,7 +70,6 @@ public class ProductDAO implements IDProduct {
                 Boolean status = resultSet.getBoolean("Status");
 
                 products.add(new Product(id, image, name, price, quantity, description, status));
-
             }
 
         } catch (SQLException e) {
@@ -54,6 +77,7 @@ public class ProductDAO implements IDProduct {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+
         return products;
     }
 

@@ -36,6 +36,15 @@ public class Product {
         this.status = status;
     }
 
+    public Product(String name, BigDecimal price, String size, int quantity, String description, String urlImage) {
+        this.name = name;
+        this.price = price;
+        this.size = size;
+        this.quantity = quantity;
+        this.description = description;
+        Image = urlImage;
+    }
+
     public int getId() {
         return id;
     }
