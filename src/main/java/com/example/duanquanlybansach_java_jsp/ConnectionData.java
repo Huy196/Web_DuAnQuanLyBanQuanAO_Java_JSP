@@ -5,18 +5,17 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionData {
-    private static String URL = "jdbc:mysql://127.0.0.1:3306/Web_QuanLyBanQuanAo_JSP";
+    private static String URL = "jdbc:mysql://127.0.0.1:3306/web_quanlybanquanao_jsp";
     private static String userName = "root";
-    private static String pass = "tamtamtam";
+    private static String pass = "1962005";
 
     public ConnectionData() {
     }
     public static Connection connection() throws ClassNotFoundException, SQLException {
         Connection connection = null;
 
-        Class.forName("com.mysql.jdbc.Driver");
+        Class.forName("com.mysql.cj.jdbc.Driver");
 
-        System.out.println("hehe");
         connection = DriverManager.getConnection(URL,userName,pass);
         return connection;
     }
