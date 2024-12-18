@@ -26,3 +26,39 @@ button:hover {
     height: 98%;
     margin-right: 30px;
 }
+
+
+
+/*them san pham*/
+/* CSS cho form nhập liệu */
+#formAddProduct {
+    display: none; /* Ẩn form ban đầu */
+    margin: 20px auto;
+    width: 50%;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+.form-group label {
+    font-weight: bold;
+}
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+#addProductButton {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
