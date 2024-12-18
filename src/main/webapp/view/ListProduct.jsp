@@ -14,7 +14,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-    <%--    <link rel="stylesheet" href="/css/ListProduct.css">--%>
     <link rel="stylesheet" href="/css/List.css">
     <script src="/js/LoadDataProduct.js"></script>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -33,7 +32,7 @@
             </button>
         </form>
     </div>
-    <form action="/products?action=add">
+    <form action="products?action=interfaceAdd" method="post">
         <div>
             <button id="button" type="submit"
                     style="width: 200px;margin-left: 820px; background-color: #28A745; color: white; font-size: 16px;
@@ -53,16 +52,16 @@
 
 </div>
 <table style="margin-top: -35px">
-    <thead>
-    <tr>
-        <th>STT</th>
-        <th>Hình ảnh</th>
-        <th>Tên sản phầm</th>
-        <th>Giá</th>
-        <th>Số lượng</th>
-        <th>Mô tả</th>
-        <th>Trạng thái</th>
-        <th>Chức Năng</th>
+    <thead >
+    <tr style="height: 45px">
+        <th style="background: #e1a7a7">STT</th>
+        <th style="background: #e1a7a7">Hình ảnh</th>
+        <th style="background: #e1a7a7">Tên sản phầm</th>
+        <th style="background: #e1a7a7">Giá</th>
+        <th style="background: #e1a7a7">Số lượng</th>
+        <th style="background: #e1a7a7">Mô tả</th>
+        <th style="background: #e1a7a7">Trạng thái</th>
+        <th style="background: #e1a7a7">Chức Năng</th>
     </tr>
     </thead>
     <c:forEach var="products" items="${products}">
@@ -70,7 +69,7 @@
             <td><c:out value="${products.id}"/></td>
             <td><img src="${products.image}" width="100px" height="100px"></td>
             <td><c:out value="${products.name}"/></td>
-            <td><c:out value="${products.price}"/></td>
+            <td><c:out value="${products.price}"/> vnđ</td>
             <td><c:out value="${products.quantity}"/></td>
             <td><c:out value="${products.description}"/></td>
             <td><c:out value="${products.status}"/></td>
