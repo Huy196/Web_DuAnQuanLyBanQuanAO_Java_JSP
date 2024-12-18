@@ -30,6 +30,20 @@ public class ProductSevrlet extends HttpServlet {
     }
 
     @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String action = req.getParameter("action");
+        if (action == null || action.trim().isEmpty()) {
+            action = " ";
+        }
+        switch (action) {
+            case "search":
+                searchProductByName(req, resp);
+                break;
+        }
+
+    }
+
+    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
 
@@ -44,9 +58,10 @@ public class ProductSevrlet extends HttpServlet {
             case "home":
                 req.getRequestDispatcher("/view/HomeAdmin.jsp").forward(req, resp);
                 break;
+
             case "delete":
                 try {
-                    updateStatusProductById(req,resp);
+                    updateStatusProductById(req, resp);
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 } catch (ClassNotFoundException e) {
@@ -57,6 +72,19 @@ public class ProductSevrlet extends HttpServlet {
                 listAllProduct(req, resp);
                 break;
         }
+    }
+
+    private void searchProductByName(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String name = req.getParameter("text");
+
+        List<Product> products = productDAO.searchName(name);
+        req.setAttribute("products", products);
+        if (name == null) {
+            listAllProduct(req, resp);
+        }
+
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/view/ListProduct.jsp");
+        dispatcher.forward(req, resp);
     }
 
     private void updateStatusProductById(HttpServletRequest req, HttpServletResponse resp) throws SQLException, ClassNotFoundException, ServletException, IOException {
