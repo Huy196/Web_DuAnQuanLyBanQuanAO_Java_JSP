@@ -18,6 +18,8 @@ public class ProductDAO implements IDProduct {
 
     private static final String Inser_into_Product = "INSERT INTO Product (Name, Price, Size, Quantity, Description, Image, Status) VALUES (?,?,?,?,?,?, IF(Quantity > 0, 1, 0))";
 
+    private static final String Update_Product_By_ID= "update product set Name = ?, Price = ?, Size = ?, Quantity = ?, Description = ?, Image =? where IDproduct =?";
+
     public ProductDAO() throws SQLException, ClassNotFoundException {
     }
 
@@ -60,15 +62,14 @@ public class ProductDAO implements IDProduct {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                int ids = resultSet.getInt("IDproduct");
                 String image = resultSet.getString("Image");
                 String names = resultSet.getString("Name");
                 BigDecimal price = resultSet.getBigDecimal("Price");
+                String size = resultSet.getString("Size");
                 int quantity = resultSet.getInt("Quantity");
                 String description = resultSet.getString("Description");
-                Boolean status = resultSet.getBoolean("Status");
 
-                product = new Product(ids,image,names,price,quantity,description,status);
+                product = new Product(id,image,names,price,size,quantity,description);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -142,6 +143,24 @@ public class ProductDAO implements IDProduct {
 
     @Override
     public boolean updateProduct(Product product) throws SQLException, ClassNotFoundException {
-        return false;
+        boolean row = false;
+        try {
+            Connection connection = ConnectionData.connection();
+
+            PreparedStatement preparedStatement = connection.prepareStatement(Update_Product_By_ID);
+            preparedStatement.setString(1, product.getName());
+            preparedStatement.setBigDecimal(2, product.getPrice());
+            preparedStatement.setString(3, product.getSize());
+            preparedStatement.setInt(4, product.getQuantity());
+            preparedStatement.setString(5, product.getDescription());
+            preparedStatement.setString(6, product.getImage());
+            preparedStatement.setInt(7,product.getId());
+
+
+            row = preparedStatement.executeUpdate() > 0;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return row;
     }
 }

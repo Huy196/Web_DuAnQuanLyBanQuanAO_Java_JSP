@@ -51,6 +51,18 @@ public class ProductSevrlet extends HttpServlet {
                     throw new RuntimeException(e);
                 }
                 break;
+            case "edit":
+                try {
+                    int id = Integer.parseInt(req.getParameter("id"));
+                    System.out.println(id);
+                    editProductById(req,resp);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                } catch (ClassNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
+                break;
+
             case "add":
                 try {
                     addProduct(req,resp);
@@ -63,6 +75,24 @@ public class ProductSevrlet extends HttpServlet {
                 req.getRequestDispatcher("/view/AddProduct.jsp").forward(req, resp);
                 break;
         }
+
+
+    }
+
+    private void editProductById(HttpServletRequest req, HttpServletResponse resp) throws SQLException, ClassNotFoundException, ServletException, IOException {
+        int id = Integer.parseInt(req.getParameter("id"));
+        String name = req.getParameter("name");
+        BigDecimal price = new BigDecimal(req.getParameter("price"));
+        String size = req.getParameter("size");
+        int quantity = Integer.parseInt(req.getParameter("quantity"));
+        String description = req.getParameter("description");
+        String urlImage = req.getParameter("image");
+
+        productDAO.updateProduct(new Product(id,name,price,size,quantity,description,urlImage));
+
+        listAllProduct(req,resp);
+
+        System.out.println(id);
 
 
     }
@@ -100,15 +130,6 @@ public class ProductSevrlet extends HttpServlet {
             case "edit":
                 showProductByIDEdit(req,resp);
                 break;
-//            case "delete":
-//                try {
-//                    updateStatusProductById(req, resp);
-//                } catch (SQLException e) {
-//                    throw new RuntimeException(e);
-//                } catch (ClassNotFoundException e) {
-//                    throw new RuntimeException(e);
-//                }
-//                break;
             default:
                 try {
                     listAllProduct(req, resp);
@@ -128,6 +149,7 @@ public class ProductSevrlet extends HttpServlet {
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/view/EditProduct.jsp");
         req.setAttribute("product",product);
+
         dispatcher.forward(req,resp);
     }
 

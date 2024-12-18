@@ -16,9 +16,9 @@
 
 </head>
 <body>
+<h1>Sửa sản phẩm</h1>
+<form action="products?action=edit&id=${product.id}" method="post">
 
-<form action="products?action=edit" method="post">
-    <h1>Sửa sản phẩm</h1>
     <label for="name">Tên sản phẩm:</label>
     <input type="text" id="name" name="name" value="${product.name}" required
 <%--           oninvalid="showTemporaryMessage(this, 'Vui lòng nhập tên sản phẩm')"--%>

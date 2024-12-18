@@ -15,16 +15,6 @@ public class Product {
     public Product() {
     }
 
-    public Product(int id, String name, BigDecimal price, String size, int quantity, String description, String image, boolean status) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.size = size;
-        this.quantity = quantity;
-        this.description = description;
-        Image = image;
-        this.status = status;
-    }
 
     public Product(int id, String image, String name, BigDecimal price, int quantity, String description, Boolean status) {
         this.id = id;
@@ -44,6 +34,27 @@ public class Product {
         this.description = description;
         Image = urlImage;
     }
+
+    public Product(int id, String name, BigDecimal price, String size, int quantity, String description, String urlImage) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.size = size;
+        this.quantity = quantity;
+        this.description = description;
+        Image = urlImage;
+    }
+
+    public Product(int id, String image, String names, BigDecimal price, String size, int quantity, String description) {
+        this.name = names;
+        this.id = id;
+        this.price = price;
+        this.quantity = quantity;
+        this.description = description;
+        Image = image;
+        this.size = size;
+    }
+
 
     public int getId() {
         return id;
