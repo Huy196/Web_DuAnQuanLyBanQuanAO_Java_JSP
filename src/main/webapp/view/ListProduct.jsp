@@ -24,12 +24,14 @@
 <h1 style="text-align: center;font-size: 4.0rem">Danh sách sản phẩm</h1> <br>
 <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 20px; margin-top: -20px">
     <div style="display: flex; align-items: center; gap: 10px;">
-        <input type="text" placeholder="Nhập từ khóa..."
-               style="width: 300px; height: 45px; padding: 5px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px">
-        <button type="submit"
-                style="width: 120px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;margin-top: 10px;text-align: center">
-            Tìm kiếm
-        </button>
+        <form action="products?action=search" method="post">
+            <input name="text" type="text" placeholder="Nhập từ khóa..."
+                   style="width: 300px; height: 45px; padding: 5px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px">
+            <button type="submit"
+                    style="width: 120px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;margin-top: 10px;text-align: center">
+                Tìm kiếm
+            </button>
+        </form>
     </div>
     <form action="/products?action=add">
         <div>
@@ -41,21 +43,21 @@
         </div>
     </form>
 
-        <div>
-            <button onclick="loadHome()" type="button"
-                    style="width: 200px;margin-left: 1200px; background-color: #28A745; color: white; font-size: 16px;
+    <div>
+        <button onclick="loadHome()" type="button"
+                style="width: 200px;margin-left: 1200px; background-color: #28A745; color: white; font-size: 16px;
                 border: none; border-radius: 5px; cursor: pointer;margin-top: -110px;">
-                Quay lai trang chủ
-            </button>
-        </div>
+            Quay lai trang chủ
+        </button>
+    </div>
 
 </div>
 <table style="margin-top: -35px">
     <thead>
     <tr>
         <th>STT</th>
-        <th >Hình ảnh</th>
-        <th >Tên sản phầm</th>
+        <th>Hình ảnh</th>
+        <th>Tên sản phầm</th>
         <th>Giá</th>
         <th>Số lượng</th>
         <th>Mô tả</th>

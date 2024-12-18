@@ -9,6 +9,7 @@ public interface IDProduct {
     Product selectProduct(int id);
 
     List<Product> selectAllProduct();
+    List<Product> searchName( String name);
 
     boolean updateStatusProduct(int id) throws SQLException, ClassNotFoundException;
 
