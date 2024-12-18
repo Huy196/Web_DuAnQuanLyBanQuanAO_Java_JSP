@@ -115,14 +115,12 @@
                 <h5 class="card-title">Áo Cộc</h5>
                 <p class="text-primary">Giá: 230000 VND</p>
             </div>
-
-            <div class="d-flex flex-column mb-4 lead">
+            <div class="d-flex">
+                <button class="btn btn-danger ms-1">Thêm vào giỏ hàng</button>
             </div>
         </div>
-                <div class="d-flex">
-                    <button class="btn btn-danger ms-1">Thêm vào giỏ hàng</button>
-                </div>
             </div>
+
         </div>
     </div>
 </section>
