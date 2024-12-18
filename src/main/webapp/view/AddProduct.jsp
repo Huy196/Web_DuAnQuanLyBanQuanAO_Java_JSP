@@ -42,6 +42,10 @@
     <input type="number" id="quantity" name="quantity" required
            oninvalid="showTemporaryMessage(this, 'Vui lòng điền số lượng sản phẩm')"
     ><br><br>
+    <label for="image">Link ảnh:</label>
+    <input type="text" id="image" name="image" required
+           oninvalid="showTemporaryMessage(this, 'Vui lòng điền ảnh sản phẩm')"
+    /><br><br>
 
     <button type="submit">Thêm sản phẩm</button>
 </form>
