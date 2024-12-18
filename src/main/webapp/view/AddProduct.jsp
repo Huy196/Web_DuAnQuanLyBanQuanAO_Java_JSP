@@ -15,10 +15,14 @@
 <form action="products?action=add" method="post" onsubmit="return validateFormProduct()">
 
     <label for="name">Tên sản phẩm:</label>
-    <input type="text" id="name" name="name"><br><br>
+    <input type="text" id="name" name="name" required
+           oninvalid="showTemporaryMessage(this, 'Vui lòng điền tên sản phẩm')"
+    ><br><br>
 
     <label for="price">Giá:</label>
-    <input type="number" id="price" name="price"><br><br>
+    <input type="number" id="price" name="price" required
+           oninvalid="showTemporaryMessage(this, 'Vui lòng điền giá sản phẩm')"
+    ><br><br>
 
     <label for="size">Size:</label>
     <select id="size" name="size">
@@ -31,11 +35,13 @@
 
     <label for="description">Mô tả:</label>
     <input type="text" id="description" name="description" required
-           oninvalid="showTemporaryMessage(this, 'Vui lòng mô tả sản phẩm')"
+           oninvalid="showTemporaryMessage(this, 'Vui lòng điền mô tả sản phẩm')"
     /><br><br>
 
     <label for="quantity">Số lượng:</label>
-    <input type="number" id="quantity" name="quantity"><br><br>
+    <input type="number" id="quantity" name="quantity" required
+           oninvalid="showTemporaryMessage(this, 'Vui lòng điền số lượng sản phẩm')"
+    ><br><br>
 
     <button type="submit">Thêm sản phẩm</button>
 </form>
