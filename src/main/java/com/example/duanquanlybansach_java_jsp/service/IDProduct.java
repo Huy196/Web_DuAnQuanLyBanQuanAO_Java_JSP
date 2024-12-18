@@ -11,7 +11,6 @@ public interface IDProduct {
     List<Product> selectAllProduct();
     List<Product> searchName( String name);
 
-    boolean updateStatusProduct(int id) throws SQLException, ClassNotFoundException;
 
     boolean updateProduct(Product product) throws SQLException, ClassNotFoundException;
 }

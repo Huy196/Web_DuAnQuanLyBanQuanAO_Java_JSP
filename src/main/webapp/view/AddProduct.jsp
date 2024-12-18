@@ -15,7 +15,7 @@
     <script src="/js/Login.js"></script>
 </head>
 <body>
-<h1>Add New Product</h1>
+<h1>Thêm sản phẩm</h1>
 <form action="products?action=add" method="post" onsubmit="return validateFormProduct()">
     <label for="name">Tên sản phẩm:</label>
     <input type="text" id="name" name="name" required
