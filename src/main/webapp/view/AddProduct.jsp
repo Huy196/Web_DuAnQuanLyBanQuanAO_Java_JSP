@@ -11,9 +11,9 @@
     </head>
 </head>
 <body>
+<h1>Thêm sản phẩm</h1>
+<form action="products?action=add" method="post" onsubmit="return validateFormProduct()">
 
-<form action="products?action=add" method="post">
-    <h1>Thêm Sản Phẩm Mới</h1>
     <label for="name">Tên sản phẩm:</label>
     <input type="text" id="name" name="name"><br><br>
 

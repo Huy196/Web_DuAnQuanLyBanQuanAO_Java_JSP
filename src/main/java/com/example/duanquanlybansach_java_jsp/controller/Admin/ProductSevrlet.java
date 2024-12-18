@@ -97,18 +97,18 @@ public class ProductSevrlet extends HttpServlet {
             case "home":
                 req.getRequestDispatcher("/view/HomeAdmin.jsp").forward(req, resp);
                 break;
-
-
-
-            case "delete":
-                try {
-                    updateStatusProductById(req, resp);
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                } catch (ClassNotFoundException e) {
-                    throw new RuntimeException(e);
-                }
+            case "edit":
+                showProductByIDEdit(req,resp);
                 break;
+//            case "delete":
+//                try {
+//                    updateStatusProductById(req, resp);
+//                } catch (SQLException e) {
+//                    throw new RuntimeException(e);
+//                } catch (ClassNotFoundException e) {
+//                    throw new RuntimeException(e);
+//                }
+//                break;
             default:
                 try {
                     listAllProduct(req, resp);
@@ -119,6 +119,16 @@ public class ProductSevrlet extends HttpServlet {
                 }
                 break;
         }
+    }
+
+    private void showProductByIDEdit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int id = Integer.parseInt(req.getParameter("id"));
+
+        Product product = productDAO.selectProduct(id);
+
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/view/EditProduct.jsp");
+        req.setAttribute("product",product);
+        dispatcher.forward(req,resp);
     }
 
     private void searchProductByName(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException, ClassNotFoundException {
@@ -134,13 +144,13 @@ public class ProductSevrlet extends HttpServlet {
         dispatcher.forward(req, resp);
     }
 
-    private void updateStatusProductById(HttpServletRequest req, HttpServletResponse resp) throws SQLException, ClassNotFoundException, ServletException, IOException {
-        int id = Integer.parseInt(req.getParameter("id"));
-
-        productDAO.updateStatusProduct(id);
-
-        listAllProduct(req, resp);
-    }
+//    private void updateStatusProductById(HttpServletRequest req, HttpServletResponse resp) throws SQLException, ClassNotFoundException, ServletException, IOException {
+//        int id = Integer.parseInt(req.getParameter("id"));
+//
+//        productDAO.updateStatusProduct(id);
+//
+//        listAllProduct(req, resp);
+//    }
 
     private void listAllProduct(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException, ClassNotFoundException {
         List<Product> products = productDAO.selectAllProduct();
