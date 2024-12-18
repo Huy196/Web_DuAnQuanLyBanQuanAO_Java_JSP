@@ -8,11 +8,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Sửa sản phẩm</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sửa Sản Phẩm</title>
+    <link rel="stylesheet" href="/css/EditProduct.css">
+    <script src="/js/Login.js" defer></script>
+
 </head>
 <body>
-<h1>Sửa sản phẩm</h1>
+
 <form action="products?action=edit" method="post">
+    <h1>Sửa sản phẩm</h1>
     <label for="name">Tên sản phẩm:</label>
     <input type="text" id="name" name="name" value="${product.name}" required
 <%--           oninvalid="showTemporaryMessage(this, 'Vui lòng nhập tên sản phẩm')"--%>
@@ -33,7 +39,7 @@
     /><br><br>
 
     <label for="description">Mô tả:</label>
-    <input type="text" id="description" name="description" value="${product.description}"  style="width: 300px;overflow-x: auto" required
+    <input type="text" id="description" name="description" value="${product.description}" required
     /><br><br>
 
     <label for="image">Link ảnh:</label>
