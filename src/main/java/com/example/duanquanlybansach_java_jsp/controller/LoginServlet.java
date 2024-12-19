@@ -51,6 +51,7 @@ public class LoginServlet extends HttpServlet {
                     IDProduct product = new ProductDAO();
                     req.setAttribute("IDuser", id);
                     req.setAttribute("products",product.selectAllProduct());
+
                     RequestDispatcher dispatcher = req.getRequestDispatcher("/view/HomeUser.jsp");
                     dispatcher.forward(req, resp);
                 }
