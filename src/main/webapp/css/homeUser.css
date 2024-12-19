@@ -7,36 +7,14 @@
 
 
 html, body {
-    overflow-x: hidden; /* Ẩn cuộn ngang */
-    max-width: 100%; /* Giới hạn độ rộng */
-
-
-    body {
-        background-color: #fff;
-    }
-
-    /* Table */
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        border: 1px solid #ccc;
-    }
-
-    td {
-        vertical-align: middle;
-        padding: 10px;
-    }
-
-    /* Logo */
+    overflow-x: hidden;
+    max-width: 100%;
 
     .logo {
         font-size: 20px;
         font-weight: bold;
         white-space: nowrap;
     }
-
-    /* Menu */
 
     .menu {
         list-style: none;
@@ -92,24 +70,6 @@ html, body {
         align-items: center;
     }
 
-    input[type="text"] {
-        padding: 8px 15px;
-        border: 1px solid #ccc;
-        border-radius: 20px;
-        width: 300px;
-        outline: none;
-        transition: all 0.3s ease;
-    }
-
-    input[type="text"]:focus {
-        width: 400px;
-        border-color: #007bff;
-        box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
-        background-color: #fff;
-    }
-
-    /* Search Button */
-
     .search-btn {
         background-color: #ffffff;
         border: none;
@@ -126,14 +86,12 @@ html, body {
         color: #ffffff;
     }
 
-    /* Cart Icon */
 
     .cart {
         font-size: 30px;
         cursor: pointer;
     }
 
-    /* Adjustments for better UI appearance */
 
     .menu li {
         padding: 10px;
@@ -145,7 +103,6 @@ html, body {
         border-radius: 5px;
     }
 
-    /* Responsive Design: Adjust the size of input and buttons on smaller screens */
     @media screen and (max-width: 768px) {
         .menu {
             flex-direction: column;
@@ -189,9 +146,6 @@ html, body {
     #logoutBtn:hover {
         background-color: #d32f2f;
     }
-
-    /* Show dropdown content when active */
-
     .user-dropdown:hover .dropdown-content {
         display: block;
     }
@@ -226,34 +180,30 @@ html, body {
 }
 
 .carousel-inner img {
-    height: 500px; /* Điều chỉnh chiều cao của ảnh */
-    object-fit: cover; /* Ảnh giữ tỉ lệ và không bị méo */
+    height: 500px;
+    object-fit: cover;
 }
 
-/* Hiệu ứng chuyển đổi ảnh mượt mà */
 .carousel-inner .carousel-item {
-    transition: transform 1s ease-in-out; /* Tạo chuyển động mượt */
+    transition: transform 1s ease-in-out;
 }
 
-/* Tùy chỉnh nút điều hướng (Previous và Next) */
 .carousel-control-prev, .carousel-control-next {
-    width: 5%; /* Giảm kích thước chiều rộng */
+    width: 5%;
 }
 
 .carousel-control-prev-icon, .carousel-control-next-icon {
-    background-color: rgba(0, 0, 0, 0.5); /* Nền mờ cho nút */
-    border-radius: 50%; /* Làm tròn nút */
-    padding: 10px; /* Tăng kích thước của biểu tượng */
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 10px;
 }
 
-/* Hiệu ứng hover nút điều hướng */
 .carousel-control-prev:hover .carousel-control-prev-icon,
 .carousel-control-next:hover .carousel-control-next-icon {
     background-color: rgba(0, 0, 0, 0.8);
     transition: background-color 0.3s ease;
 }
 
-/* Tùy chỉnh các chấm chỉ báo */
 .carousel-indicators li {
     background-color: rgba(0, 0, 0, 0.5);
 }
@@ -266,21 +216,16 @@ html, body {
     line-height: 1.5;
     font-family: Arial, sans-serif;
 }
-
-
-/* Cài đặt màu nền cho section */
 section {
     background-color: #eee;
     padding: 50px 0;
 }
 
-/* Cài đặt kiểu cho .container */
 .container {
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Cài đặt kiểu cho các thẻ card */
 .card {
     width: 20%;
     border-radius: 10px;
@@ -289,12 +234,10 @@ section {
     transition: transform 0.3s ease;
 }
 
-/* Hover hiệu ứng cho card */
 .card:hover {
     transform: translateY(-10px);
 }
 
-/* Cài đặt cho hình ảnh sản phẩm */
 .card-img-top {
     width: 100%;
     height: auto;
@@ -302,7 +245,6 @@ section {
     transition: opacity 0.3s ease;
 }
 
-/* Cài đặt màu nền cho phần card-body */
 .card-body {
     background-color: #fff;
     padding: 20px;

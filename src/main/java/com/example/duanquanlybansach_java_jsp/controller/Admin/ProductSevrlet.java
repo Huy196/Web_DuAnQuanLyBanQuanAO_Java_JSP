@@ -52,6 +52,16 @@ public class ProductSevrlet extends HttpServlet {
                     throw new RuntimeException(e);
                 }
                 break;
+
+            case "showListHomeUser":
+                try {
+                    showListHomeUser(req,resp);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                } catch (ClassNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
+                break;
             case "logout":
                 HttpSession session = req.getSession(false);
                 if (session != null) {
@@ -89,6 +99,15 @@ public class ProductSevrlet extends HttpServlet {
                 break;
         }
 
+
+    }
+
+    public void showListHomeUser(HttpServletRequest req, HttpServletResponse resp) throws SQLException, ClassNotFoundException, ServletException, IOException {
+        List<Product> products = productDAO.selectAllProduct();
+        req.setAttribute("products", products);
+
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/view/HomeUser.jsp");
+        dispatcher.forward(req, resp);
 
     }
 
