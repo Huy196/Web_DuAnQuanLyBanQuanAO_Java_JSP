@@ -111,33 +111,31 @@
 
 
 <section>
-    <form method="post">
-        <div class="container">
-            <div class="row">
-                <c:forEach var="products" items="${products}">
-                    <div class="col-3" style="padding: 20px">
-                        <div class="card">
+    <h1 style="font-weight: bold; padding: 10px">Danh sách sản phẩm</h1>
 
-                            <img src="${products.image}" class="card-img-top" alt="Product Image">
-                            <div class="card-body">
-                                <h5 class="card-title">${products.name}</h5>
-                                <p class="text-primary">${products.price}</p>
-                            </div>
-                            <div class="d-flex">
-                                <form action="products?action=showDetailProduct&id=${products.id}" method="post">
-                                    <button type="submit"
-                                            class="btn btn-danger ms-1">Chi tiết sản phẩm
-                                    </button>
-                                </form>
-                            </div>
+    <div class="container">
+        <div class="row">
+            <c:forEach var="product" items="${products}">
+                <div class="col-3" style="padding: 20px">
+                    <div class="card">
+
+                        <img src="${product.image}" class="card-img-top" alt="Product Image">
+                        <div class="card-body">
+                            <h5 class="card-title">${product.name}</h5>
+                            <p class="text-primary">${product.price}</p>
+                        </div>
+                        <div class="d-flex">
+                            <form action="${pageContext.request.contextPath}/user?action=showDetailProduct&id=${product.id}" method="post">
+                                <button type="submit"
+                                        class="btn btn-danger ms-1">Chi tiết sản phẩm
+                                </button>
+                            </form>
                         </div>
                     </div>
-                </c:forEach>
-
-
-            </div>
+                </div>
+            </c:forEach>
         </div>
-    </form>
+    </div>
 </section>
 
 </body>

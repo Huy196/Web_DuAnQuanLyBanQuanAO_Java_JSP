@@ -54,17 +54,10 @@ public class LoginServlet extends HttpServlet {
                     RequestDispatcher dispatcher = req.getRequestDispatcher("/view/InterfaceLogin.jsp");
                     dispatcher.forward(req,resp);
                 } else {
-                    IDProduct product = new ProductDAO();
-
-                    req.setAttribute("products", product.selectAllProduct());
-
                     HttpSession session = req.getSession();
                     session.setAttribute("IDuser", id);
 
-                    System.out.println("tài khoản có id " + session.getAttribute("IDuser"));
-
-                    RequestDispatcher dispatcher = req.getRequestDispatcher("/view/HomeUser.jsp");
-                    dispatcher.forward(req, resp);
+                    resp.sendRedirect("/user");
                 }
             } else {
                 req.setAttribute("error", "Tên đăng nhập hoặc mật khẩu không đúng!");
