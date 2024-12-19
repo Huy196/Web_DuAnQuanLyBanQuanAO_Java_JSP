@@ -53,15 +53,6 @@ public class ProductSevrlet extends HttpServlet {
                 }
                 break;
 
-            case "showListHomeUser":
-                try {
-                    showListHomeUser(req, resp);
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                } catch (ClassNotFoundException e) {
-                    throw new RuntimeException(e);
-                }
-                break;
             case "logout":
                 HttpSession session = req.getSession(false);
                 if (session != null) {
@@ -95,37 +86,10 @@ public class ProductSevrlet extends HttpServlet {
                     throw new RuntimeException(e);
                 }
                 break;
-            case "showDetailProduct":
-                    showDetailProductByID(req,resp);
-                break;
-
             case "interfaceAdd":
                 req.getRequestDispatcher("/view/AddProduct.jsp").forward(req, resp);
                 break;
         }
-
-
-    }
-
-    private void showDetailProductByID(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = Integer.parseInt(req.getParameter("id"));
-
-        Product product = productDAO.selectProduct(id);
-
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/view/DetailProduct.jsp");
-        req.setAttribute("product", product);
-
-        dispatcher.forward(req, resp);
-
-    }
-
-    public void showListHomeUser(HttpServletRequest req, HttpServletResponse resp) throws SQLException, ClassNotFoundException, ServletException, IOException {
-        List<Product> products = productDAO.selectAllProduct();
-        req.setAttribute("product", products);
-
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/view/HomeUser.jsp");
-        dispatcher.forward(req, resp);
-
     }
 
     private void editProductById(HttpServletRequest req, HttpServletResponse resp) throws SQLException, ClassNotFoundException, ServletException, IOException {
