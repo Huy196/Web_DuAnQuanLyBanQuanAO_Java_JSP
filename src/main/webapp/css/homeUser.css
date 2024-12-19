@@ -356,13 +356,13 @@ section {
 
 /* Cài đặt cho nút Buy now */
 . btn-danger {
-    background-color: #dc3545;
+    background-color: #0022ff;
     color: #fff;
     border: none;
 }
 
 .btn-danger:hover {
-    background-color: #c82333;
+    background-color: #ea112b;
 }
 
 /* Cài đặt margin và padding cho các phần tử */
@@ -384,5 +384,8 @@ section {
 
 .ms-1 {
 margin: auto;
+}
+.card-content{
+    font-size: 20px;
 }
 
