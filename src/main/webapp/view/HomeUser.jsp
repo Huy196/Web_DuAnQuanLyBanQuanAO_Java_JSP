@@ -74,7 +74,7 @@
                     <div class="dropdown-content" id="dropdownContent">
                         <form action="/products?action=logoutHomeUser" method="post" onsubmit="return confirmLogout()">
                             <a href="#">Thông tin người dùng</a>
-                            <button id="logoutBtn" >🔓 Đăng xuất</button>
+                            <button id="logoutBtn">🔓 Đăng xuất</button>
                         </form>
                     </div>
                 </div>
@@ -111,8 +111,7 @@
 
 
 <section>
-    <h1 id="list">Danh mục sản phẩm</h1>
-    <form  action="/products?action=showListHomeUser" method="post">
+    <form method="post">
         <div class="container">
             <div class="row">
                 <c:forEach var="products" items="${products}">
@@ -125,7 +124,11 @@
                                 <p class="text-primary">${products.price}</p>
                             </div>
                             <div class="d-flex">
-                                <button class="btn btn-danger ms-1">Chi tiết sản phẩm</button>
+                                <form action="products?action=showDetailProduct&id=${products.id}" method="post">
+                                    <button type="submit"
+                                            class="btn btn-danger ms-1">Chi tiết sản phẩm
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>

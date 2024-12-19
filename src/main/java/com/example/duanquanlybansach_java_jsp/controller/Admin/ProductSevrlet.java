@@ -55,7 +55,7 @@ public class ProductSevrlet extends HttpServlet {
 
             case "showListHomeUser":
                 try {
-                    showListHomeUser(req,resp);
+                    showListHomeUser(req, resp);
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 } catch (ClassNotFoundException e) {
@@ -69,10 +69,9 @@ public class ProductSevrlet extends HttpServlet {
                 }
                 req.getRequestDispatcher("/view/InterfaceLogin.jsp").forward(req, resp);
                 break;
-
             case "logoutHomeUser":
                 HttpSession session1 = req.getSession(false);
-                if (session1 != null){
+                if (session1 != null) {
                     session1.removeAttribute("IDuser");
 
                     System.out.println("Khi đăng xuất" + session1.getAttribute("IDuser"));
@@ -81,9 +80,7 @@ public class ProductSevrlet extends HttpServlet {
                 break;
             case "edit":
                 try {
-                    int id = Integer.parseInt(req.getParameter("id"));
-                    System.out.println(id);
-                    editProductById(req,resp);
+                    editProductById(req, resp);
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 } catch (ClassNotFoundException e) {
@@ -93,10 +90,13 @@ public class ProductSevrlet extends HttpServlet {
 
             case "add":
                 try {
-                    addProduct(req,resp);
+                    addProduct(req, resp);
                 } catch (SQLException | ClassNotFoundException e) {
                     throw new RuntimeException(e);
                 }
+                break;
+            case "showDetailProduct":
+                    showDetailProductByID(req,resp);
                 break;
 
             case "interfaceAdd":
@@ -107,9 +107,21 @@ public class ProductSevrlet extends HttpServlet {
 
     }
 
+    private void showDetailProductByID(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int id = Integer.parseInt(req.getParameter("id"));
+
+        Product product = productDAO.selectProduct(id);
+
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/view/DetailProduct.jsp");
+        req.setAttribute("product", product);
+
+        dispatcher.forward(req, resp);
+
+    }
+
     public void showListHomeUser(HttpServletRequest req, HttpServletResponse resp) throws SQLException, ClassNotFoundException, ServletException, IOException {
         List<Product> products = productDAO.selectAllProduct();
-        req.setAttribute("products", products);
+        req.setAttribute("product", products);
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/view/HomeUser.jsp");
         dispatcher.forward(req, resp);
@@ -125,9 +137,9 @@ public class ProductSevrlet extends HttpServlet {
         String description = req.getParameter("description");
         String urlImage = req.getParameter("image");
 
-        productDAO.updateProduct(new Product(id,name,price,size,quantity,description,urlImage));
+        productDAO.updateProduct(new Product(id, name, price, size, quantity, description, urlImage));
 
-        listAllProduct(req,resp);
+        listAllProduct(req, resp);
 
         System.out.println(id);
 
@@ -142,11 +154,11 @@ public class ProductSevrlet extends HttpServlet {
         String description = req.getParameter("description");
         String urlImage = req.getParameter("image");
 
-        Product product = new Product(name,price,size,quantity,description,urlImage);
+        Product product = new Product(name, price, size, quantity, description, urlImage);
 
         productDAO.insertProduct(product);
 
-        listAllProduct(req,resp);
+        listAllProduct(req, resp);
     }
 
     @Override
@@ -165,7 +177,7 @@ public class ProductSevrlet extends HttpServlet {
                 break;
 
             case "edit":
-                showProductByIDEdit(req,resp);
+                showProductByIDEdit(req, resp);
                 break;
             default:
                 try {
@@ -185,9 +197,9 @@ public class ProductSevrlet extends HttpServlet {
         Product product = productDAO.selectProduct(id);
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/view/EditProduct.jsp");
-        req.setAttribute("product",product);
+        req.setAttribute("product", product);
 
-        dispatcher.forward(req,resp);
+        dispatcher.forward(req, resp);
     }
 
     private void searchProductByName(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException, ClassNotFoundException {
