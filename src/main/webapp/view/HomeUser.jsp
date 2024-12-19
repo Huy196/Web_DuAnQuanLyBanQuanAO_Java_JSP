@@ -73,8 +73,10 @@
                 <div class="user-dropdown">
                     <span class="user-icon" id="userIcon">👤</span>
                     <div class="dropdown-content" id="dropdownContent">
-                        <a href="#">Thông tin người dùng</a>
-                        <button id="logoutBtn">🔓 Đăng xuất</button>
+                        <form action="/products?action=logoutHomeUser" method="post" onsubmit="return confirmLogout()">
+                            <a href="#">Thông tin người dùng</a>
+                            <button id="logoutBtn" >🔓 Đăng xuất</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -134,3 +136,13 @@
 
 </body>
 </html>
+
+<script>
+    function confirmLogout() {
+        const userConfirmed = confirm("Bạn có chắc chắn muốn đăng xuất không?");
+        if (!userConfirmed) {
+            return false;
+        }
+        return true;
+    }
+</script>

@@ -66,11 +66,16 @@ public class ProductSevrlet extends HttpServlet {
                 HttpSession session = req.getSession(false);
                 if (session != null) {
                     session.invalidate();
+                }
+                req.getRequestDispatcher("/view/InterfaceLogin.jsp").forward(req, resp);
+                break;
 
+            case "logoutHomeUser":
+                HttpSession session1 = req.getSession(false);
+                if (session1 != null){
+                    session1.removeAttribute("IDuser");
 
-                    resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-                    resp.setHeader("Pragma", "no-cache");
-                    resp.setDateHeader("Expires", 0);
+                    System.out.println("Khi đăng xuất" + session1.getAttribute("IDuser"));
                 }
                 req.getRequestDispatcher("/view/InterfaceLogin.jsp").forward(req, resp);
                 break;
