@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -43,14 +44,24 @@ public class LoginServlet extends HttpServlet {
 
             if (row.next()) {
                 int id = row.getInt("IDuser");
+                boolean status = row.getBoolean("Status");
                 String role = row.getString("Role");
                 if ("admin".equalsIgnoreCase(role)) {
                     RequestDispatcher dispatcher = req.getRequestDispatcher("/view/HomeAdmin.jsp");
                     dispatcher.forward(req, resp);
+                } else if (!status) {
+                    req.setAttribute("error", "Tài khoản của bạn đã bị khóa");
+                    RequestDispatcher dispatcher = req.getRequestDispatcher("/view/InterfaceLogin.jsp");
+                    dispatcher.forward(req,resp);
                 } else {
                     IDProduct product = new ProductDAO();
-                    req.setAttribute("IDuser", id);
-                    req.setAttribute("products",product.selectAllProduct());
+                    req.setAttribute("products", product.selectAllProduct());
+
+                    HttpSession session = req.getSession();
+                    session.setAttribute("IDuser", id);
+
+                    System.out.println("tài khoản có id " + session.getAttribute("IDuser"));
+
                     RequestDispatcher dispatcher = req.getRequestDispatcher("/view/HomeUser.jsp");
                     dispatcher.forward(req, resp);
                 }
@@ -59,9 +70,11 @@ public class LoginServlet extends HttpServlet {
                 RequestDispatcher dispatcher = req.getRequestDispatcher("/view/InterfaceLogin.jsp");
                 dispatcher.forward(req, resp);
             }
-        } catch (SQLException e) {
+        } catch (
+                SQLException e) {
             throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (
+                ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
 
