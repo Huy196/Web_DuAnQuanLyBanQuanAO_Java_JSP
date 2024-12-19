@@ -20,7 +20,7 @@
     ><br><br>
 
     <label for="price">Giá:</label>
-    <input type="number" id="price" name="price" required
+    <input type="number" id="price" min="0" name="price" required
            oninvalid="showTemporaryMessage(this, 'Vui lòng điền giá sản phẩm')"
     ><br><br>
 
@@ -39,7 +39,7 @@
     /><br><br>
 
     <label for="quantity">Số lượng:</label>
-    <input type="number" id="quantity" name="quantity" required
+    <input type="number" id="quantity" min="0" name="quantity" required
            oninvalid="showTemporaryMessage(this, 'Vui lòng điền số lượng sản phẩm')"
     ><br><br>
     <label for="image">Link ảnh:</label>

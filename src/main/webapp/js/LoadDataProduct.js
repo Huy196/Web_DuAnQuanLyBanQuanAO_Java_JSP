@@ -14,3 +14,4 @@ function loadProductPage() {
 function loadHome(){
     window.location.href = "/products?action=home";
 }
+

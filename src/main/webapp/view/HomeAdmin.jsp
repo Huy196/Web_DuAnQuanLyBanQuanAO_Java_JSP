@@ -20,13 +20,21 @@
         <button>
             Sản phẩm
         </button>
-
     </form>
+
     <button name="Người Dùng">Người dùng</button>
-    <button name="Đăng Xuất">Đăng xuất</button>
+    <form action="/products?action=logout" method="post"  onsubmit="return confirmLogout()">
+        <button name="Đăng Xuất">Đăng xuất</button>
+    </form>
 </div>
 <div id="content" class="centent">
     <img src="https://gotrangtri.vn/wp-content/uploads/2020/06/b%C3%ACa3.jpg">
 </div>
 </body>
 </html>
+<script>
+    function confirmLogout() {
+        const userConfirmed = confirm("Bạn có chắc chắn muốn đăng xuất không?");
+        return userConfirmed;
+    }
+</script>
