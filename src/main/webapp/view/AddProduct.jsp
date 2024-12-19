@@ -45,9 +45,18 @@
     <label for="image">Link ảnh:</label>
     <input type="text" id="image" name="image" required
            oninvalid="showTemporaryMessage(this, 'Vui lòng điền ảnh sản phẩm')"
+           oninput="updateImage()"
     /><br><br>
+    <img id="productImage" src="${product.image}" alt="Ảnh sản phẩm" style="max-width: 200px;"/><br><br>
 
     <button type="submit">Thêm sản phẩm</button>
 </form>
 </body>
 </html>
+<script type="text/javascript">
+    function updateImage() {
+        var imageUrl = document.getElementById('image').value;
+        var imageElement = document.getElementById('productImage');
+        imageElement.src = imageUrl;
+    }
+</script>
