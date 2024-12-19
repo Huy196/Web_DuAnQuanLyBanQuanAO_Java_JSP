@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Connection;
@@ -50,6 +51,18 @@ public class ProductSevrlet extends HttpServlet {
                 } catch (ClassNotFoundException e) {
                     throw new RuntimeException(e);
                 }
+                break;
+            case "logout":
+                HttpSession session = req.getSession(false);
+                if (session != null) {
+                    session.invalidate();
+
+
+                    resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+                    resp.setHeader("Pragma", "no-cache");
+                    resp.setDateHeader("Expires", 0);
+                }
+                req.getRequestDispatcher("/view/InterfaceLogin.jsp").forward(req, resp);
                 break;
             case "edit":
                 try {
@@ -123,10 +136,10 @@ public class ProductSevrlet extends HttpServlet {
         }
 
         switch (action) {
-
             case "home":
                 req.getRequestDispatcher("/view/HomeAdmin.jsp").forward(req, resp);
                 break;
+
             case "edit":
                 showProductByIDEdit(req,resp);
                 break;
@@ -166,13 +179,6 @@ public class ProductSevrlet extends HttpServlet {
         dispatcher.forward(req, resp);
     }
 
-//    private void updateStatusProductById(HttpServletRequest req, HttpServletResponse resp) throws SQLException, ClassNotFoundException, ServletException, IOException {
-//        int id = Integer.parseInt(req.getParameter("id"));
-//
-//        productDAO.updateStatusProduct(id);
-//
-//        listAllProduct(req, resp);
-//    }
 
     private void listAllProduct(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException, ClassNotFoundException {
         List<Product> products = productDAO.selectAllProduct();
