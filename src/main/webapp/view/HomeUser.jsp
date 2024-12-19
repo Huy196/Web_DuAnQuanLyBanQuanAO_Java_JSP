@@ -27,13 +27,12 @@
         <td style="text-align: center;">
             <ul class="menu">
                 <li>
-                    Sale 80%
+                    Giày
                     <div class="dropdown-content">
-                        <a href="#">Áo phông</a>
-                        <a href="#">Áo vest</a>
-                        <a href="#">Quần dài</a>
-                        <a href="#">Áo sơ mi</a>
-                        <a href="#">Áo khoác</a>
+                        <a href="#">Giày da</a>
+                        <a href="#">Nike</a>
+                        <a href="#">Adidas</a>
+                        <a href="#">Balenciaga</a>
                     </div>
                 </li>
                 <li>
@@ -91,13 +90,13 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img class="d-block w-100" src="/img/tải xuống.jpg" alt="First slide">
+            <img class="d-block w-100" src="/img/logochat.webp" alt="First slide">
         </div>
         <div class="carousel-item">
-            <img class="d-block w-100" src="/img/tải xuống (1).jpg" alt="Second slide">
+            <img class="d-block w-100" src="/img/slide_4_img.webp" alt="Second slide">
         </div>
         <div class="carousel-item">
-            <img class="d-block w-100" src="/img/tải xuống (2).jpg" alt="Third slide">
+            <img class="d-block w-100" src="/img/slide_3_img.webp" alt="Third slide">
         </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -109,15 +108,16 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
-<h1 id="list">Danh mục sản phẩm</h1>
+
 
 <section>
     <form method="post">
         <div class="container">
             <div class="row">
                 <c:forEach var="products" items="${products}">
-                    <div class="col-3">
+                    <div class="col-3" style="padding: 20px">
                         <div class="card">
+
                             <img src="${products.image}" class="card-img-top" alt="Product Image">
                             <div class="card-body">
                                 <h5 class="card-title">${products.name}</h5>
@@ -133,6 +133,8 @@
                         </div>
                     </div>
                 </c:forEach>
+
+
             </div>
         </div>
     </form>

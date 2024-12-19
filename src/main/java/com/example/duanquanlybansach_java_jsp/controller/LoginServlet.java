@@ -55,6 +55,7 @@ public class LoginServlet extends HttpServlet {
                     dispatcher.forward(req,resp);
                 } else {
                     IDProduct product = new ProductDAO();
+
                     req.setAttribute("products", product.selectAllProduct());
 
                     HttpSession session = req.getSession();
