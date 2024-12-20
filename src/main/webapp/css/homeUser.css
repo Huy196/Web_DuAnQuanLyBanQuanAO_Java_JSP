@@ -46,8 +46,8 @@ html, body {
     }
 
     .menu li {
-        margin: 0 15px;
-        font-size: 20px;
+        margin: 0 20px;
+        font-size: 25px;
         cursor: pointer;
         transition: color 0.3s;
         position: relative;
@@ -102,9 +102,9 @@ html, body {
 
     input[type="text"]:focus {
         width: 400px;
-        border-color: #007bff;
-        box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
-        background-color: #fff;
+        border-color: #402aea;
+        box-shadow: 0 0 10px rgb(83, 126, 210);
+        background-color: rgba(134, 132, 132, 0.09);
     }
 
     /* Search Button */
@@ -131,6 +131,10 @@ html, body {
         font-size: 30px;
         cursor: pointer;
     }
+    .card:hover {
+        transform: translateY(-15px);
+    }
+
 
     /* Adjustments for better UI appearance */
 
@@ -299,4 +303,6 @@ margin-left: 43px;
     margin-bottom: 10px;
 
 }
+.text-primary{
+-webkit-text-fill-color: red}
 
