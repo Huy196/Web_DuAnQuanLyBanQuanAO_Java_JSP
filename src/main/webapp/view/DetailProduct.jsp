@@ -13,9 +13,10 @@
     <link rel="stylesheet" href="/css/DetailProduct.css">
 
 <body>
-<h1>Chi tiết sản phẩm</h1>
+
 
 <form>
+    <h1>Chi tiết sản phẩm</h1>
     <h3 name="name">Tên sản phẩm: ${product.name}</h3>
     <h3 name="price">Giá sản phẩm: ${product.price}</h3>
     <h3 name="quantity">Số lượng: ${product.quantity}</h3>
