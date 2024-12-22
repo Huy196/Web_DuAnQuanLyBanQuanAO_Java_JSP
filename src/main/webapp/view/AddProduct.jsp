@@ -11,8 +11,8 @@
     </head>
 </head>
 <body>
-<h1>Thêm sản phẩm</h1>
 <form action="products?action=add" method="post" onsubmit="return validateFormProduct()">
+    <h1>Thêm sản phẩm</h1>
 
     <label for="name">Tên sản phẩm:</label>
     <input type="text" id="name" name="name" required
@@ -33,21 +33,23 @@
         <option value="XL">XXL</option>
     </select><br><br>
 
+    <label for="quantity">Số lượng:</label>
+    <input type="number" id="quantity" min="0" name="quantity" required
+           oninvalid="showTemporaryMessage(this, 'Vui lòng điền số lượng sản phẩm')"
+    ><br><br>
+
     <label for="description">Mô tả:</label>
     <input type="text" id="description" name="description" required
            oninvalid="showTemporaryMessage(this, 'Vui lòng điền mô tả sản phẩm')"
     /><br><br>
 
-    <label for="quantity">Số lượng:</label>
-    <input type="number" id="quantity" min="0" name="quantity" required
-           oninvalid="showTemporaryMessage(this, 'Vui lòng điền số lượng sản phẩm')"
-    ><br><br>
+
     <label for="image">Link ảnh:</label>
     <input type="text" id="image" name="image" required
            oninvalid="showTemporaryMessage(this, 'Vui lòng điền ảnh sản phẩm')"
            oninput="updateImage()"
     /><br><br>
-    <img id="productImage" src="${product.image}" alt="Ảnh sản phẩm" style="max-width: 200px;"/><br><br>
+    <img id="productImage" src="${product.image}" alt="Ảnh sản phẩm" /><br><br>
 
     <button type="submit">Thêm sản phẩm</button>
 </form>
