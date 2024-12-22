@@ -87,11 +87,11 @@ img {
     width: 100%;
 }
 
-#productImage{
+#productImage {
     float: right;
-    margin-top: -480px;
-    width: 470px;
-    height: 440px;
+    margin-top: -450px;
+    width: 450px;
+    height: 400px;
     text-align: center;
     margin-right: 5px;
 }
