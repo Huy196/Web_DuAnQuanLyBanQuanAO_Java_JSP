@@ -52,7 +52,7 @@
 
         <button type="submit" name="submit">Đăng nhập</button>
     </form>
-    <a href="/login?action=redirectRegister" class="sign-up-btn" methods="GET">Chưa có tài khoản? Đăng ký</a>
+    <a href="/login?action=redirectRegister" class="sign-up-btn" methods="GET">Bạn chưa có tài khoản? Đăng ký</a>
 </div>
 </body>
 </html>
