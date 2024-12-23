@@ -16,7 +16,12 @@
 
 </head>
 <body>
-<table>
+<table style="position: fixed; top: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+  margin-bottom: 10px;
+z-index: 1000;">
     <tr>
         <td class="logo" style="width: 20%;">
             <h1>
@@ -68,7 +73,11 @@
             <div class="search-cart">
                 <input type="text" class="search-input" placeholder="Tìm kiếm">
                 <button class="search-btn">🔎</button>
-                <span class="cart">🛒</span>
+                <form action="/user?action=showCart" method="post">
+                    <button type="submit" style="background:none; border:none;">
+                        <span class="cart">🛒</span>
+                    </button>
+                </form>
                 <div class="user-dropdown">
                     <span class="user-icon" id="userIcon">👤</span>
                     <div class="dropdown-content" id="dropdownContent">
@@ -82,7 +91,7 @@
         </td>
     </tr>
 </table>
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+<div style="margin-top: 110px" id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -125,7 +134,8 @@
                             <p class="text-primary">${product.price}</p>
                         </div>
                         <div class="d-flex">
-                            <form action="${pageContext.request.contextPath}/user?action=showDetailProduct&id=${product.id}" method="post">
+                            <form action="${pageContext.request.contextPath}/user?action=showDetailProduct&id=${product.id}"
+                                  method="post">
                                 <button type="submit"
                                         class="btn btn-danger ms-1">Chi tiết sản phẩm
                                 </button>
