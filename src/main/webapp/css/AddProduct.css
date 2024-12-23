@@ -30,11 +30,11 @@ form {
 h1 {
     text-align: center;
     font-size: 1.8em;
-    color: #333333; /* Màu chữ đậm */
+    color: #333333;
     margin-bottom: 20px;
 }
 
-/* Labels */
+
 label {
     display: block;
     margin-bottom: 8px;
@@ -42,7 +42,6 @@ label {
     color: #555555;
 }
 
-/* Input Fields and Select Box */
 input[type="text"],input[type="number"], select {
     width: 50%;
     padding: 10px;
@@ -54,7 +53,6 @@ input[type="text"],input[type="number"], select {
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-/* Focus Effect on Inputs */
 input:focus,
 select:focus {
     border-color: #4a90e2;
@@ -62,7 +60,6 @@ select:focus {
     outline: none;
 }
 
-/* Submit Button */
 button[type="submit"] {
     background-color: #4a90e2;
     color: #ffffff;
@@ -79,14 +76,12 @@ button[type="submit"] {
 
 }
 
-/* Hover Effect for Button */
 button[type="submit"]:hover {
     background-color: #357ab7;
     transform: translateY(-2px);
 
 }
 
-/* Responsive Design */
 @media (max-width: 480px) {
     form {
         padding: 20px;
