@@ -15,17 +15,20 @@
 <body>
 
 
-<form>
-    <h1>Chi tiết sản phẩm</h1>
-    <h3 name="name">Tên sản phẩm: ${product.name}</h3>
-    <h3 name="price">Giá sản phẩm: ${product.price}</h3>
-    <h3 name="quantity">Số lượng: ${product.quantity}</h3>
-    <h3 nonce="discription">Mô tả: ${product.description}</h3>
-    <img src="${product.image}"/>
-    <br><br>
+<form id="detail">
+
+    <h1 id="detailproduct">Chi tiết sản phẩm</h1>
+
+    <h3 id="name" name="name"> tên sản phẩm: ${product.name}</h3>
+    <h3 id="price" name="price">Giá hiện tại: ${product.price}</h3>
+    <h3 id="quantity" name="quantity">Số lượng: ${product.quantity}</h3>
+    <h3 id="discription" nonce="discription">Mô tả: ${product.description}</h3>
+
+
+    <img id="img" src="${product.image}"/>
 
     <form action="">
-        <button type="submit">Thêm rỏ hàng</button>
+        <button type="submit">Thêm giỏ hàng</button>
     </form>
 </form>
 
