@@ -2,7 +2,6 @@ package com.example.duanquanlybansach_java_jsp.controller.Admin;
 
 import com.example.duanquanlybansach_java_jsp.ConnectionData;
 import com.example.duanquanlybansach_java_jsp.model.Product;
-import com.example.duanquanlybansach_java_jsp.model.User;
 import com.example.duanquanlybansach_java_jsp.service.ProductDAO;
 
 import javax.servlet.RequestDispatcher;
@@ -19,8 +18,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "ProductSevrlet", value = "/products")
-public class ProductSevrlet extends HttpServlet {
+@WebServlet(name = "ProductServlet", value = "/products")
+public class ProductServlet extends HttpServlet {
     private ProductDAO productDAO;
 
     @Override

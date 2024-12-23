@@ -1,10 +1,6 @@
 package com.example.duanquanlybansach_java_jsp.controller;
 
 import com.example.duanquanlybansach_java_jsp.ConnectionData;
-import com.example.duanquanlybansach_java_jsp.controller.Admin.ProductSevrlet;
-import com.example.duanquanlybansach_java_jsp.service.IDProduct;
-import com.example.duanquanlybansach_java_jsp.service.ProductDAO;
-import sun.rmi.server.Dispatcher;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

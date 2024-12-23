@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @WebServlet(value = "/user")
-public class ProductSevrlet extends HttpServlet {
+public class ProductServlet extends HttpServlet {
     private ProductDAO productDAO;
 
     @Override
@@ -38,10 +38,16 @@ public class ProductSevrlet extends HttpServlet {
         }
 
         switch (action) {
+
             default:
                 showListHomeUser(req, resp);
                 break;
         }
+    }
+
+    private void showCart(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        resp.sendRedirect("/view/Cart.jsp");
+
     }
 
     @Override
@@ -56,6 +62,10 @@ public class ProductSevrlet extends HttpServlet {
         switch (action){
             case "showDetailProduct":
                     showDetailProductByID(req,resp);
+                break;
+
+            case "showCart":
+                showCart(req,resp);
                 break;
         }
     }
