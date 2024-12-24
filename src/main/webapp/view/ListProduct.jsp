@@ -21,9 +21,9 @@
 </head>
 <body style="width: 100%;padding: 15px">
 <div style="display: flex">
-    <div style="width: 20%">
-        <div id="left">
-            <button onclick="loadHome()" name="Trang chủ">Trang chủ</button>
+    <div id="left" style="width: 20%">
+        <div >
+            <button id="homepage" onclick="loadHome()" name="Trang chủ">Trang chủ</button>
             <form action="/products?action=" method="get">
                 <button>
                     Sản phẩm
@@ -32,7 +32,7 @@
 
             <button name="Người Dùng">Người dùng</button>
             <form action="/products?action=logout" method="post" onsubmit="return confirmLogout()">
-                <button name="Đăng Xuất">Đăng xuất</button>
+                    <button id="logout" name="Đăng Xuất">Đăng xuất</button>
             </form>
         </div>
     </div>
@@ -41,8 +41,7 @@
         <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 20px; margin-top: -20px">
             <div style="display: flex; align-items: center; gap: 10px;">
                 <form action="products?action=search" method="post">
-                    <input name="text" type="text" placeholder="Nhập từ khóa..."
-                           style="width: 300px; height: 45px; padding: 5px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px">
+                    <input id="search" name="text" type="text" placeholder="Nhập từ khóa...">
                     <button type="submit"
                             style="width: 120px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;margin-top: 10px;text-align: center">
                         Tìm kiếm
@@ -53,7 +52,7 @@
                 <div>
                     <button id="button" type="submit"
                             style="width: 200px;margin-left: 500px; background-color: #28A745; color: white; font-size: 16px;
-                border: none; border-radius: 5px; cursor: pointer;margin-top: -91px;">
+                border: none; border-radius: 5px; cursor: pointer;margin-top: -98px;">
                         Thêm sản phẩm
                     </button>
                 </div>
