@@ -131,14 +131,22 @@ z-index: 1000;">
                         <img src="${product.image}" class="card-img-top" alt="Product Image">
                         <div class="card-body">
                             <h5 class="card-title">${product.name}</h5>
-                            <p class="text-primary">${product.price}</p>
+                            <p class="text-primary">Giá : ${product.price} đ</p>
                         </div>
                         <div class="d-flex">
                             <form action="${pageContext.request.contextPath}/user?action=showDetailProduct&id=${product.id}"
                                   method="post">
-                                <button type="submit"
-                                        class="btn btn-danger ms-1">Chi tiết sản phẩm
-                                </button>
+                                <div>
+                                    <button style="background: #4CAF50;width: 110px;margin-left: 20px" type="submit"
+                                            class="btn btn-danger ms-1">Chi tiết
+                                    </button>
+                                </div>
+                            </form>
+                            <form action="/product?action=addToCart&id=${product.id}&quantity=1" method="post">
+                                <div>
+                                    <button style="background: red;width: 75px" type="submit" class="btn btn-danger ms-1">Mua
+                                    </button>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -160,3 +168,5 @@ z-index: 1000;">
         return true;
     }
 </script>
+
+
