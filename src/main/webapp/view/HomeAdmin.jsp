@@ -24,7 +24,7 @@
 
     <button name="Người Dùng">Người dùng</button>
     <form action="/products?action=logout" method="post"  onsubmit="return confirmLogout()">
-        <button name="Đăng Xuất">Đăng xuất</button>
+        <button id="logout" name="Đăng Xuất">Đăng xuất</button>
     </form>
 </div>
 <div id="content" class="centent">
