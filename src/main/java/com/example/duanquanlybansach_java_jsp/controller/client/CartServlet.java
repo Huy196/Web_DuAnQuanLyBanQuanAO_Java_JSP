@@ -77,6 +77,7 @@ public class CartServlet extends HttpServlet {
         }
 
         req.getSession().setAttribute("cart",cart);
+
         resp.sendRedirect("/user");
 
     }

@@ -5,6 +5,7 @@ body {
     height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
+    background: #ffffff;
 }
 
 #detail {
@@ -58,6 +59,20 @@ button:hover {
 
 #discription {
     margin-left: 20px
+}
+
+.imageDetail{
+    height: 50%;
+
+}
+.text{
+    margin-top: 46px;
+    margin-left: -20px;
+    padding: 10px;
+    font-size: 20px;
+}
+form{
+    background: #cccccc;
 }
 
 

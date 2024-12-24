@@ -131,6 +131,7 @@ html, body {
         font-size: 30px;
         cursor: pointer;
     }
+
     .card:hover {
         transform: translateY(-15px);
     }
@@ -275,13 +276,14 @@ section {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 
 }
+
 .card {
     width: 90%;
     height: 420px;
@@ -295,14 +297,17 @@ section {
 
 }
 
-.card-img-top{
+.card-img-top {
     height: 250px;
 }
-.btn{
-margin-left: 43px;
-    margin-bottom: 10px;
+
+.btn {
+    margin-left: 43px;
+    margin-bottom: 25px;
 
 }
-.text-primary{
--webkit-text-fill-color: red}
+
+.text-primary {
+    -webkit-text-fill-color: red
+}
 

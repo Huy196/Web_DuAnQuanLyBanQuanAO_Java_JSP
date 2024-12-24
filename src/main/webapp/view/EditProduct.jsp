@@ -16,12 +16,21 @@
 
 </head>
 <body>
+<%
+    String successMessage = (String) request.getAttribute("successMessage");
+    if (successMessage != null) {
+%>
+<div class="notification" style="display: block;">
+    <%= successMessage %>
+</div>
+<%
+    }
+%>
 
 <form action="products?action=edit&id=${product.id}" method="post" onsubmit="return confirmEditProdct()">
     <h1>Sửa sản phẩm</h1>
     <label for="name">Tên sản phẩm:</label>
     <input type="text" id="name" name="name" value="${product.name}" required
-    <%--           oninvalid="showTemporaryMessage(this, 'Vui lòng nhập tên sản phẩm')"--%>
     /><br><br>
     <label for="price">Giá:</label>
     <input type="number" id="price" name="price" min="0" value="${product.price}" required
