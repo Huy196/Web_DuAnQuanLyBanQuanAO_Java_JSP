@@ -55,8 +55,27 @@ public class CartServlet extends HttpServlet {
                 int quantity = Integer.parseInt(req.getParameter("quantity"));
                 addToCart(req,resp,cart,id,quantity);
                 break;
+            case "removeFromCart":
+                cart.removeIf(item -> item.getProductId() == id);
+                updateCartItem(req,cart);
+                req.getSession().setAttribute("cart",cart);
+                resp.sendRedirect("/view/Cart.jsp");
+
+                break;
         }
     }
+
+    private void updateCartItem(HttpServletRequest req, List<CartItem> cart) {
+        int cartItem =cart.size();
+
+        req.getSession().setAttribute("cartItem",cartItem);
+    }
+
+//    private void removeFromCarid(HttpServletRequest req, HttpServletResponse resp, List<CartItem> cart, int id) throws IOException {
+//
+//
+//    }
+
 
     private void addToCart(HttpServletRequest req, HttpServletResponse resp, List<CartItem> cart, int id, int quantity) throws IOException {
         Product product = productDAO.selectProduct(id);
@@ -78,7 +97,7 @@ public class CartServlet extends HttpServlet {
 
         req.getSession().setAttribute("cart",cart);
 
-        resp.sendRedirect("/user");
+        resp.sendRedirect("/user?action=showCart");
 
     }
 
