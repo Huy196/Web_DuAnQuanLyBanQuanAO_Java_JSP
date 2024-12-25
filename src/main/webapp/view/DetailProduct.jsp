@@ -17,7 +17,7 @@
 <form action="/product?action=addToCart&id=${product.id}" method="post" >
     <div style="width: 1100px;height: 600px;display: flex">
         <div class="imageDetail" style="width: 600px;margin-top: 90px;height: 300px">
-            <img src="${product.image}" width="400px" height="auto" />
+            <img src="${product.image}" width="350px" height="400px" />
         </div>
         <div class="text" style="width: 450px;text-align: left;margin-left: -20px;">
             <h1 style="border: red;padding: 5px;">Chi tiết sản phẩm</h1>

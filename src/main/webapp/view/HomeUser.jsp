@@ -13,15 +13,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Quần Áo HT</title>
     <link rel="stylesheet" href="/css/homeUser.css">
+    <script src="/js/Animation.js" defer></script>
+
 
 </head>
 <body>
-<table style="position: fixed; top: 0;
-    left: 0;
-    width: 100%;
-    background: white;
-  margin-bottom: 10px;
-z-index: 1000;">
+
+<table  style="position: fixed; top: 0;left: 0;width: 100%;background: white;margin-bottom: 10px;z-index: 1000;">
     <tr>
         <td class="logo" style="width: 20%;">
             <h1>
