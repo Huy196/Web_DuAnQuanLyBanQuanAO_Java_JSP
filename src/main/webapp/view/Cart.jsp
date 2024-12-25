@@ -28,7 +28,7 @@
     <form action="/product" method="post">
         <c:if test="${not empty cart}">
         <div style="display: flex">
-            <img src="/img/logo.png" width="100px" height="70px">
+            <a href="http://localhost:8081/user"><img src="/img/logo.png" width="100px" height="70px"></a>
             <h1 style="padding: 10px;width: 100%">| Giỏ hàng</h1>
 
             <div class="search-cart" style="width: 60% ; margin-left: 700px">

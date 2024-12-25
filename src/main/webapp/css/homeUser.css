@@ -7,14 +7,14 @@
 
 
 html, body {
-    overflow-x: hidden; /* Ẩn cuộn ngang */
-    max-width: 100%; /* Giới hạn độ rộng */
+    overflow-x: hidden;
+    max-width: 100%;
 
     body {
         background-color: #fff;
     }
 
-    /* Table */
+
 
     table {
         width: 100%;
@@ -57,9 +57,6 @@ html, body {
         color: #f90;
     }
 
-    .menu li:hover .dropdown-content {
-        display: block;
-    }
 
     .dropdown-content {
         display: none;
@@ -78,11 +75,6 @@ html, body {
         text-decoration: none;
         display: block;
         font-size: 16px;
-    }
-
-    .dropdown-content a:hover {
-        background-color: #d9d3d3;
-        color: #ff9900;
     }
 
     .search-cart {
@@ -125,7 +117,6 @@ html, body {
         color: #ffffff;
     }
 
-    /* Cart Icon */
 
     .cart {
         font-size: 30px;
@@ -137,19 +128,8 @@ html, body {
     }
 
 
-    /* Adjustments for better UI appearance */
 
-    .menu li {
-        padding: 10px;
-        transition: color 0.3s, background-color 0.3s;
-    }
 
-    .menu li:hover {
-        background-color: #fafafa;
-        border-radius: 5px;
-    }
-
-    /* Responsive Design: Adjust the size of input and buttons on smaller screens */
     @media screen and (max-width: 768px) {
         .menu {
             flex-direction: column;
@@ -194,9 +174,9 @@ html, body {
         background-color: #d32f2f;
     }
 
-    /* Show dropdown content when active */
 
     .user-dropdown:hover .dropdown-content {
+        margin-left: -110px;
         display: block;
     }
 
@@ -205,6 +185,7 @@ html, body {
 
     }
 }
+
 
 .dropdown-content {
     display: block;
@@ -229,6 +210,7 @@ html, body {
 
 }
 
+
 .carousel-inner img {
     height: 500px;
     object-fit: cover;
@@ -249,25 +231,20 @@ carousel-inner .carousel-item {
     padding: 10px;
 }
 
-/* Hiệu ứng hover nút điều hướng */
+
 .carousel-control-prev:hover .carousel-control-prev-icon,
 .carousel-control-next:hover .carousel-control-next-icon {
     background-color: rgba(0, 0, 0, 0.8);
     transition: background-color 0.3s ease;
 }
 
-/* Tùy chỉnh các chấm chỉ báo */
+
 .carousel-indicators li {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
 .carousel-indicators .active {
     background-color: rgba(0, 0, 0, 0.8);
-}
-
-#list {
-    line-height: 1.5;
-    font-family: Arial, sans-serif;
 }
 
 
@@ -311,3 +288,29 @@ section {
     -webkit-text-fill-color: red
 }
 
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.footer-section {
+    flex: 1 1 200px;
+    margin: 10px;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.footer-section p, .footer-section li {
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+
+
+
+    

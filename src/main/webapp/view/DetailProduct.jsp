@@ -25,7 +25,7 @@
             <h3 style="padding: 5px;" name="price">Giá sản phẩm: ${product.price}</h3>
             <h3 style="padding: 5px;">Số lượng: <input style="height: 25px" type="number" name="quantity" value="1" min="1" max="${product.quantity}"></h3>
             <h3 style="padding: 5px" nonce="discription">Mô tả: ${product.description}</h3>
-            <button type="submit">Thêm rỏ hàng</button>
+            <button type="submit">Thêm giỏ hàng</button>
         </div>
     </div>
 </form>
