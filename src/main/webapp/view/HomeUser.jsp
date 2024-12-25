@@ -33,38 +33,15 @@ z-index: 1000;">
             <ul class="menu">
                 <li>
                     Giày
-                    <div class="dropdown-content">
-                        <a href="#">Giày da</a>
-                        <a href="#">Nike</a>
-                        <a href="#">Adidas</a>
-                        <a href="#">Balenciaga</a>
-                    </div>
                 </li>
                 <li>
                     Bán Chạy
-                    <div class="dropdown-content">
-                        <a href="#">Áo sơ mi</a>
-                        <a href="#">Áo khoác</a>
-                        <a href="#">Áo thun</a>
-                        <a href="#">Quần short</a>
-                    </div>
                 </li>
                 <li>
                     Quần
-                    <div class="dropdown-content">
-                        <a href="#">Quần short</a>
-                        <a href="#">Quần bò</a>
-                        <a href="#">Quần tây</a>
-                    </div>
                 </li>
                 <li>
                     Áo
-                    <div class="dropdown-content">
-                        <a href="#">Áo thun</a>
-                        <a href="#">Áo len</a>
-                        <a href="#">Áo sơ mi</a>
-                        <a href="#">Áo khoác</a>
-                    </div>
                 </li>
             </ul>
         </td>
@@ -81,7 +58,7 @@ z-index: 1000;">
                 <div class="user-dropdown">
                     <span class="user-icon" id="userIcon">👤</span>
                     <div class="dropdown-content" id="dropdownContent">
-                        <form action="/products?action=logoutHomeUser" method="post" onsubmit="return confirmLogout()">
+                        <form  action="/products?action=logoutHomeUser" method="post" onsubmit="return confirmLogout()">
                             <a href="#">Thông tin người dùng</a>
                             <button id="logoutBtn">🔓 Đăng xuất</button>
                         </form>
@@ -144,7 +121,8 @@ z-index: 1000;">
                             </form>
                             <form action="/product?action=addToCart&id=${product.id}&quantity=1" method="post">
                                 <div>
-                                    <button style="background: red;width: 75px" type="submit" class="btn btn-danger ms-1">Mua
+                                    <button style="background: red;width: 75px" type="submit"
+                                            class="btn btn-danger ms-1">Mua
                                     </button>
                                 </div>
                             </form>
@@ -155,6 +133,45 @@ z-index: 1000;">
         </div>
     </div>
 </section>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h1>
+                <a href="http://localhost:8081/user"><img style="width: 40%" src="/img/logo.png"></a>
+            </h1>
+            <p> Cửa Hàng Thời Trang
+                <HT></HT>
+            </p>
+            <p>Chủ sở hữu: Đỗ QUốc Huy</p>
+
+            <a style="color: black" href="https://www.facebook.com/oquochuy.634694?locale=vi_VN">FaceBook: Quốc Huy</a>
+            <br><br>
+            <a style="color: black" href="https://mail.google.com/mail/u/0/#inbox/FMfcgzQXKWjgwHLSPNnZHBWdKjVMzfTg?compose=new">Email: doquochuyy66@gmail.com</a>
+        </div>
+        <div class="footer-section">
+            <h3>CHÍNH SÁCH KHÁCH HÀNG</h3>
+            <ul>
+                <li>Chính sách khách hàng</li>
+                <li>Chính sách thanh toán</li>
+                <li>Chính sách đổi trả</li>
+                <li>Chính sách bảo hành</li>
+                <li>Chính sách mua hàng</li>
+                <li>Chính sách giao nhận</li>
+                <li>Chính sách kiểm hàng</li>
+                <li>Chính sách bảo mật</li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>THÔNG TIN CỬA HÀNG</h3>
+            <p>Địa chỉ: QL32, Đức Giang, Hoài Đức, Hà Nội</p>
+        </div>
+        <div class="footer-section">
+            <h3>LIÊN HỆ</h3>
+            <a style="color: black" href="https://mail.google.com/mail/u/0/#inbox">Email:viettam205@gmail.com</a>
+        </div>
+    </div>
+</footer>
 
 </body>
 </html>
