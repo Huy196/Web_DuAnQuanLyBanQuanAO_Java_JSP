@@ -71,7 +71,7 @@
                 <c:forEach items="${cart}" var="item" varStatus="status">
                     <tr style="height: 100px">
                         <td>
-                            <input type="checkbox" name="name_${item.productId}" value="${item.productId}"
+                            <input id="checkbox" type="checkbox" name="name_${item.productId}" value="${item.productId}"
                                    onclick="updateTotal()">
                         </td>
                         <td><img style="max-width: 100px; max-height: 100px" src="${item.urlImage}"></td>
@@ -82,7 +82,7 @@
                             <label>${item.price} đ</label>
                         </td>
                         <td>
-                            <select style="text-align: center" name="size">
+                            <select style="text-align: center" name="size_${item.productId}">
                                 <option value="S">S</option>
                                 <option value="M">M</option>
                                 <option value="L">L</option>
@@ -124,11 +124,17 @@
     <form action="">
         <input id="selectAll" style="width: 25px;height: 15px" type="checkbox" value=""> Chọn tất cả
     </form>
-    <form style="margin-top: 1px;height: 30px;display: flex" action="">
-        <label id="total" style="width: 200px;margin-left: 900px;color: red"></label>
-        <button style="margin-left: 10px ;margin-top: -10px; text-align: center;background: red;color: white" type="submit">Thanh toán</button>
+    <form style="margin-top: 1px;height: 30px;display: flex" action="/product?action=showPayProduct" method="post">
+        <label name="total" id="total" style="width: 200px;margin-left: 450px;color: red"></label>
+        <c:forEach items="${cart}" var="item">
+            <input type="hidden" name="selectedProductIds" value="${item.productId}">
+        </c:forEach>
+        <button style="margin-left: 10px ;margin-top: -10px; text-align: center;background: red;color: white"
+                type="submit">Thanh toán
+        </button>
     </form>
 </div>
+
 </c:if>
 
 <c:if test="${empty cart}">
@@ -137,3 +143,52 @@
 
 </body>
 </html>
+<script>
+    function getSelectedProducts() {
+        var selectedProducts = [];
+        var checkboxes = document.querySelectorAll('input[name^="name_"]:checked');
+
+        checkboxes.forEach(function(checkbox) {
+            var productId = checkbox.value;
+
+            var size = document.querySelector('select[name="size_' + productId + '"]').value;
+            var quantity = document.querySelector('input[name="quantity_' + productId + '"]').value;
+
+            selectedProducts.push({ productId: productId, size: size, quantity: quantity });
+        });
+
+        if (selectedProducts.length === 0) {
+            alert("Vui lòng chọn ít nhất một sản phẩm để thanh toán!");
+            event.preventDefault();
+            return;
+        }
+
+        var form = document.querySelector('form[action="/product?action=showPayProduct"]');
+        var existingHiddenInputs = form.querySelectorAll('input[name="selectedProductIds"]');
+        existingHiddenInputs.forEach(input => input.remove());
+
+
+        selectedProducts.forEach(function(product) {
+            var hiddenInputProductId = document.createElement('input');
+            hiddenInputProductId.type = 'hidden';
+            hiddenInputProductId.name = 'selectedProductIds';
+            hiddenInputProductId.value = product.productId;
+            form.appendChild(hiddenInputProductId);
+
+            var hiddenInputSize = document.createElement('input');
+            hiddenInputSize.type = 'hidden';
+            hiddenInputSize.name = 'size_' + product.productId;
+            hiddenInputSize.value = product.size;
+            form.appendChild(hiddenInputSize);
+
+            var hiddenInputQuantity = document.createElement('input');
+            hiddenInputQuantity.type = 'hidden';
+            hiddenInputQuantity.name = 'quantity_' + product.productId;
+            hiddenInputQuantity.value = product.quantity;
+            form.appendChild(hiddenInputQuantity);
+        });
+    }
+
+    document.querySelector('form[action="/product?action=showPayProduct"]').onsubmit = getSelectedProducts;
+</script>
+
