@@ -79,7 +79,7 @@
                     <td><c:out value="${products.price}"/> vnđ</td>
                     <td><c:out value="${products.quantity}"/></td>
                     <td><c:out value="${products.description}"/></td>
-                    <td><c:out value="${products.status}"/></td>
+                    <td><c:out value="${products.quantity > 0 ? 'true' : 'false' }"/></td>
                     <td>
                         <a href="/products?action=edit&id=${products.id}">Sửa</a>
                     </td>

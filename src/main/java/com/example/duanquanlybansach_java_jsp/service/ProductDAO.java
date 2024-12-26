@@ -1,6 +1,8 @@
 package com.example.duanquanlybansach_java_jsp.service;
 
 import com.example.duanquanlybansach_java_jsp.ConnectionData;
+import com.example.duanquanlybansach_java_jsp.model.Bill;
+import com.example.duanquanlybansach_java_jsp.model.DetailBill;
 import com.example.duanquanlybansach_java_jsp.model.Product;
 
 import java.math.BigDecimal;
@@ -18,7 +20,7 @@ public class ProductDAO implements IDProduct {
 
     private static final String Inser_into_Product = "INSERT INTO Product (Name, Price, Size, Quantity, Description, Image, Status) VALUES (?,?,?,?,?,?, IF(Quantity > 0, 1, 0))";
 
-    private static final String Update_Product_By_ID= "update product set Name = ?, Price = ?, Size = ?, Quantity = ?, Description = ?, Image =? where IDproduct =?";
+    private static final String Update_Product_By_ID = "update product set Name = ?, Price = ?, Size = ?, Quantity = ?, Description = ?, Image =? where IDproduct =?";
 
     public ProductDAO() throws SQLException, ClassNotFoundException {
     }
@@ -69,7 +71,7 @@ public class ProductDAO implements IDProduct {
                 int quantity = resultSet.getInt("Quantity");
                 String description = resultSet.getString("Description");
 
-                product = new Product(id,image,names,price,size,quantity,description);
+                product = new Product(id, image, names, price, size, quantity, description);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -154,13 +156,65 @@ public class ProductDAO implements IDProduct {
             preparedStatement.setInt(4, product.getQuantity());
             preparedStatement.setString(5, product.getDescription());
             preparedStatement.setString(6, product.getImage());
-            preparedStatement.setInt(7,product.getId());
+            preparedStatement.setInt(7, product.getId());
 
 
             row = preparedStatement.executeUpdate() > 0;
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return row;
     }
+
+    @Override
+    public int inserintoBill(Bill bill) throws SQLException {
+        String SQL = "insert into bill (IDuser,Datetime,TotalPrice,PTTT,Status) values (?,now(),?,?,'Chưa giao hàng')";
+
+        int id = 0;
+        try {
+            Connection connection = ConnectionData.connection();
+
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setInt(1, bill.getUserId());
+            preparedStatement.setBigDecimal(2, bill.getTotal());
+            preparedStatement.setString(3, bill.getPTTT());
+
+            preparedStatement.executeUpdate();
+
+            try (ResultSet resultSet = preparedStatement.getGeneratedKeys()) {
+                if (resultSet.next()) {
+                    id = resultSet.getInt(1);
+                } else {
+                    System.out.println("No generated keys returned.");
+                }
+
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return id;
+    }
+
+    @Override
+    public void inserintoDetailBill(DetailBill detailBill) throws SQLException {
+        String SQL_detail = "insert into detailbill (IDbill,IDproduct,Quantity,Size,UnitPrice) values (?,?,?,?,?)";
+
+        try {
+            Connection connection = ConnectionData.connection();
+
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL_detail);
+            preparedStatement.setInt(1, detailBill.getIdBill());
+            preparedStatement.setInt(2, detailBill.getProductId());
+            preparedStatement.setInt(3, detailBill.getQuantity());
+            preparedStatement.setString(4, detailBill.getSize());
+            preparedStatement.setBigDecimal(5, detailBill.getPrice());
+
+            preparedStatement.execute();
+
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

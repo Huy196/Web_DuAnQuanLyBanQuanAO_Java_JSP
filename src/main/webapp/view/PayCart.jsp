@@ -54,12 +54,13 @@
             </thead>
             <tbody>
             <c:if test="${not empty selectedProducts}">
+                <c:set var="totalBill" value="0"/>
                 <c:forEach items="${selectedProducts}" var="product">
                     <tr>
                         <td><img src="${product.image}" style="max-width: 100px; max-height: 100px;"></td>
                         <td style="text-align: left">${product.name}</td>
-                        <td>${product.size}</td>
-                        <td>${product.quantity}</td>
+                        <td name="size" >${product.size}</td>
+                        <td name="quantity">${product.quantity}</td>
                         <td>${product.price} đ</td>
                         <td>
                             <label>
@@ -67,7 +68,6 @@
                                                   currencySymbol="đ"
                                                   pattern="#,##0"/>.000 đ
                             </label>
-                                <%--                        ${product.price * product.quantity} đ--%>
                         </td>
                     </tr>
                     <c:set var="totalBill" value="${totalBill + (product.price * product.quantity)}"/>
@@ -82,27 +82,28 @@
         </table>
         <div style="margin: auto;width: 80%;">
             <form style="margin-top: 40px" action="/product?action=PayBill" method="post" onsubmit="return validatePaymentMethod()">
-
-
                 <div style=" margin: auto;">
                     <label><strong>Phương thức thanh toán:</strong></label><br>
                     <div>
-                        <input type="radio" id="transfer" name="paymentMethod" value="transfer">
+                        <input type="radio" id="transfer" name="paymentMethod" value="Chuyển khoản">
                         <label for="transfer">Chuyển khoản</label>
                     </div>
                     <div style="margin-right: 10px">
-                        <input type="radio" id="cod" name="paymentMethod" value="cod" >
+                        <input type="radio" id="cod" name="paymentMethod" value="Thanh toán khi nhận hàng" >
                         <label for="cod">Thanh toán khi nhận hàng</label>
                     </div>
                 </div>
 
                 <div style="display: flex ; margin-left: 510px;margin-top: -50px">
-                    <label style="padding: 10px ;width: 300px; color: red">Tổng tiền hàng :
+                    <label name="totalBill" style="padding: 10px ;width: 300px; color: red">Tổng tiền hàng :
                         <fmt:formatNumber value="${totalBill}" type="currency" currencySymbol="đ" pattern="#,##0"/>.000
                         đ
                     </label>
+                    <input type="hidden" name="totalBill" value="${totalBill}">
                     <c:forEach items="${selectedProducts}" var="product">
                         <input type="hidden" name="selectedProductIds" value="${product.id}">
+                        <input type="hidden" name="selectedProductQuantitys" value="${product.quantity}">
+                        <input type="hidden" name="selectedProductSizes" value="${product.size}">
                     </c:forEach>
 
                     <button style="color: white;background: red;border: none;padding: 10px;border-radius: 5px;width: 120px;height: 40px">
