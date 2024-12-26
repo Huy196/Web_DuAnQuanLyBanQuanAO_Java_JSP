@@ -95,8 +95,6 @@
                             </c:otherwise>
                         </c:choose>
                     </td>
-                        <%--<td><c:out value="${products.status}"/></td>--%>
-
                     <td>
                         <a href="/products?action=edit&id=${products.id}">Sửa</a>
                     </td>

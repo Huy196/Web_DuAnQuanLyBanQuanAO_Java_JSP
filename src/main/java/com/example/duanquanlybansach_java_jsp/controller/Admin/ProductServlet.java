@@ -71,6 +71,8 @@ public class ProductServlet extends HttpServlet {
             case "edit":
                 try {
                     editProductById(req, resp);
+                    listAllProduct(req,resp);
+
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 } catch (ClassNotFoundException e) {
@@ -103,10 +105,6 @@ public class ProductServlet extends HttpServlet {
         productDAO.updateProduct(new Product(id, name, price, size, quantity, description, urlImage));
 
         listAllProduct(req, resp);
-
-        System.out.println(id);
-
-
     }
 
     private void addProduct(HttpServletRequest req, HttpServletResponse resp) throws SQLException, ServletException, IOException, ClassNotFoundException {
