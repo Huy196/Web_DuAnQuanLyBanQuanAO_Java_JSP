@@ -117,7 +117,7 @@
                                     </button>
                                 </div>
                             </form>
-                            <form action="/product?action=addToCart&id=${product.id}&quantity=1" method="post">
+                            <form action="/product?action=addToCart&id=${product.id}&quantity=1" method="post" onsubmit="return showSuccessMessage()">
                                 <div>
                                     <button style="background: red;width: 75px" type="submit"
                                             class="btn btn-danger ms-1">Mua
@@ -180,6 +180,15 @@
         if (!userConfirmed) {
             return false;
         }
+        return true;
+    }
+    function showSuccessMessage() {
+        alert("Sản phẩm đã được thêm vào giỏ hàng thành công!");
+        successMessage.style.display = "block";
+        setTimeout(function() {
+            successMessage.style.display = "none";
+        }, 3000);
+
         return true;
     }
 </script>

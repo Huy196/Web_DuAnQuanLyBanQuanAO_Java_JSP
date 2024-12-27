@@ -13,7 +13,8 @@ import java.util.List;
 public class ProductDAO implements IDProduct {
 
 
-    private static final String Select_All_Products = "select * from product order by IDproduct desc";
+    private static final String Select_All_Products = "select * from product  order by IDproduct desc";
+    private static final String Select_All_Products_User = "select * from product where Quantity > 0";
     private static final String Search_Products = "select * from product where Name like ?";
 
     private static final String Select_Product_By_ID = "select * from product where IDproduct = ?";
@@ -88,6 +89,35 @@ public class ProductDAO implements IDProduct {
             Connection connection = ConnectionData.connection();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(Select_All_Products);
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("IDproduct");
+                String image = resultSet.getString("Image");
+                String name = resultSet.getString("Name");
+                BigDecimal price = resultSet.getBigDecimal("Price");
+                int quantity = resultSet.getInt("Quantity");
+                String description = resultSet.getString("Description");
+                Boolean status = resultSet.getBoolean("Status");
+
+                products.add(new Product(id, image, name, price, quantity, description, status));
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        return products;
+    }
+
+    @Override
+    public List<Product> selectAllProductUser() {
+        List<Product> products = new ArrayList<>();
+        try {
+            Connection connection = ConnectionData.connection();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(Select_All_Products_User);
 
             while (resultSet.next()) {
                 int id = resultSet.getInt("IDproduct");

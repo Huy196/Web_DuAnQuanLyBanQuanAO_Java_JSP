@@ -35,16 +35,17 @@
     <label for="price">Giá:</label>
     <input type="number" id="price" name="price" min="0" value="${product.price}" required
     /><br><br>
-    <label for="size">Size:</label>
+    <%--    <label for="size">Size:</label>--%>
 
-    <select id="size" name="size">
-        <option value="${product.size}">S</option>
-        <option value="${product.size}">M</option>
-        <option value="${product.size}">L</option>
-        <option value="${product.size}">XL</option>
-    </select>
+    <%--    <select id="size" name="size">--%>
+    <%--        <option value="${product.size}">S</option>--%>
+    <%--        <option value="${product.size}">M</option>--%>
+    <%--        <option value="${product.size}">L</option>--%>
+    <%--        <option value="${product.size}">XL</option>--%>
+    <%--    </select>--%>
     <label id="sl" for="quantity">Số lượng:</label>
     <input type="number" id="quantity" name="quantity" min="0" value="${product.quantity}" required>
+    <br><br>
     <label for="description">Mô tả:</label>
     <input type="text" id="description" name="description" value="${product.description}" required
     /><br><br>
@@ -53,7 +54,7 @@
     <input type="text" id="image" value="${product.image}" name="image" oninput="updateImage()" required
     /><br><br>
     <img id="productImage" src="${product.image}" alt="Ảnh sản phẩm"/><br><br>
-        <input type="submit" value="Lưu sản phẩm"/>
+    <input style="margin-top: 20px" type="submit" value="Lưu sản phẩm"/>
 </form>
 </body>
 </html>
@@ -69,6 +70,14 @@
         if (!userConfirmed) {
             return false;
         }
+
+        alert("Sản phẩm đã được cập nhật!");
+        successMessage.style.display = "block";
+        setTimeout(function () {
+            successMessage.style.display = "none";
+        }, 3000);
+
         return true;
     }
+
 </script>

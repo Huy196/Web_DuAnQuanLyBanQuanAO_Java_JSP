@@ -22,7 +22,7 @@
 <body style="width: 100%;padding: 15px">
 <div style="display: flex">
     <div id="left" style="width: 20%">
-        <div>
+        <div style="height: 700px">
             <button id="homepage" onclick="loadHome()" name="Trang chủ">Trang chủ</button>
             <form action="/products?action=" method="get">
                 <button>
@@ -37,7 +37,7 @@
         </div>
     </div>
     <div style="width: 78% ; margin-left: 20px">
-        <h1 style="text-align: center;font-size: 4.0rem">Danh sách sản phẩm</h1> <br>
+        <h1 style="text-align: center;font-size: 3.0rem">Danh sách sản phẩm</h1> <br>
         <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 20px; margin-top: -20px">
             <div style="display: flex; align-items: center; gap: 10px;">
                 <form action="products?action=search" method="post">
@@ -58,8 +58,7 @@
                 </div>
             </form>
         </div>
-        <table >
-
+        <table style="margin-top: -40px">
             <thead>
             <tr style="height: 45px">
                 <th style="background: #e1a7a7">STT</th>
@@ -72,14 +71,14 @@
                 <th style="background: #e1a7a7">Chức Năng</th>
             </tr>
             </thead>
-            </table>
-        <div style="margin: auto; width: 100%; overflow-y: auto; max-height: 550px; border: 1px solid #ccc;">
+        </table>
+        <div style="margin: auto; width: 100%; overflow-y: auto; max-height: 500px; border: 1px solid #ccc;">
 
             <table>
 
                 <c:forEach var="products" items="${products}">
                 <tr>
-                    <td style="width: 10px" ><c:out value="${products.id}"/></td>
+                    <td><c:out value="${products.id}"/></td>
                     <td><img src="${products.image}" width="100px" height="100px"></td>
                     <td><c:out value="${products.name}"/></td>
                     <td><c:out value="${products.price}"/> vnđ</td>
@@ -87,12 +86,13 @@
                     <td><c:out value="${products.description}"/></td>
                     <td>
                         <c:choose>
-                            <c:when test="${products.status == 'in stock'}">
-                                0
+                            <c:when test="${products.quantity == 0}">
+                                Hết hàng
                             </c:when>
-                            <c:otherwise>
-                                V
-                            </c:otherwise>
+                            <c:when test="${products.quantity > 0}">
+                                Còn hàng
+                            </c:when>
+
                         </c:choose>
                     </td>
                     <td>

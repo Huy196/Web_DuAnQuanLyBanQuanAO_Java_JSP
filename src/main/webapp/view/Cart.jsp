@@ -130,7 +130,7 @@
             <input type="hidden" name="selectedProductIds" value="${item.productId}">
         </c:forEach>
         <button style="margin-left: 10px ;margin-top: -10px; text-align: center;background: red;color: white"
-                type="submit">Thanh toán
+                type="submit">Mua hàng
         </button>
     </form>
 </div>
@@ -158,7 +158,7 @@
         });
 
         if (selectedProducts.length === 0) {
-            alert("Vui lòng chọn ít nhất một sản phẩm để thanh toán!");
+            alert("Vui lòng chọn ít nhất một sản phẩm để mua hàng!");
             event.preventDefault();
             return;
         }

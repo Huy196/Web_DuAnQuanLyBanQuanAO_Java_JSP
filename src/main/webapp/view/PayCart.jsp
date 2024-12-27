@@ -117,6 +117,45 @@
     </div>
 </div>
 
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h1>
+                <a href="http://localhost:8081/user"><img style="width: 40%" src="/img/logo.png"></a>
+            </h1>
+            <p> Cửa Hàng Thời Trang
+                <HT></HT>
+            </p>
+            <p>Chủ sở hữu: Đỗ QUốc Huy</p>
+
+            <a style="color: black" href="https://www.facebook.com/oquochuy.634694?locale=vi_VN">FaceBook: Quốc Huy</a>
+            <br><br>
+            <a style="color: black" href="https://mail.google.com/mail/u/0/#inbox/FMfcgzQXKWjgwHLSPNnZHBWdKjVMzfTg?compose=new">Email: doquochuyy66@gmail.com</a>
+        </div>
+        <div class="footer-section">
+            <h3>CHÍNH SÁCH KHÁCH HÀNG</h3>
+            <ul>
+                <li>Chính sách khách hàng</li>
+                <li>Chính sách thanh toán</li>
+                <li>Chính sách đổi trả</li>
+                <li>Chính sách bảo hành</li>
+                <li>Chính sách mua hàng</li>
+                <li>Chính sách giao nhận</li>
+                <li>Chính sách kiểm hàng</li>
+                <li>Chính sách bảo mật</li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>THÔNG TIN CỬA HÀNG</h3>
+            <p>Địa chỉ: QL32, Đức Giang, Hoài Đức, Hà Nội</p>
+        </div>
+        <div class="footer-section">
+            <h3>LIÊN HỆ</h3>
+            <a style="color: black" href="https://mail.google.com/mail/u/0/#inbox">Email:viettam205@gmail.com</a>
+        </div>
+    </div>
+</footer>
+
 
 </body>
 </html>
@@ -128,6 +167,7 @@
             alert("Vui lòng chọn phương thức thanh toán!");
             return false;
         }
+        alert("Đặt hàng thành công!");
         return true;
     }
 </script>
