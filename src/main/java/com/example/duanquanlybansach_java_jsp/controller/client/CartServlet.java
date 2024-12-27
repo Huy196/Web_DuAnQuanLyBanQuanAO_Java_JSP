@@ -136,6 +136,7 @@ public class CartServlet extends HttpServlet {
             detailBill.setPrice(price);
 
             productDAO1.inserintoDetailBill(detailBill);
+            productDAO1.updateQuantityProductWhenSuccess(product.getId(),quantity);
         }
 
 
@@ -189,6 +190,7 @@ public class CartServlet extends HttpServlet {
 
     private void addToCart(HttpServletRequest req, HttpServletResponse resp, List<CartItem> cart, int id, int quantity) throws IOException {
         Product product = productDAO.selectProduct(id);
+        int maxQuantity = product.getQuantity();
 
         boolean productExit = false;
 
@@ -201,7 +203,7 @@ public class CartServlet extends HttpServlet {
         }
 
         if (!productExit){
-            CartItem cartItem = new CartItem(id,product.getImage(),product.getName(),product.getPrice(),product.getSize(),quantity);
+            CartItem cartItem = new CartItem(id,product.getImage(),product.getName(),product.getPrice(),product.getSize(),quantity,maxQuantity);
             cart.add(cartItem);
         }
 

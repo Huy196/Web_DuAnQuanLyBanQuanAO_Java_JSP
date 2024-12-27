@@ -23,6 +23,9 @@ public class ProductDAO implements IDProduct {
 
     private static final String Update_Product_By_ID = "update product set Name = ?, Price = ?, Size = ?, Quantity = ?, Description = ?, Image =? where IDproduct =?";
 
+    private static final String Update_Quantity_Product_When_Success = "update product set Quantity = Quantity - ? where IDproduct = ?";
+
+
     public ProductDAO() throws SQLException, ClassNotFoundException {
     }
 
@@ -169,6 +172,23 @@ public class ProductDAO implements IDProduct {
             throw new RuntimeException(e);
         }
         return products;
+
+    }
+
+    @Override
+    public void updateQuantityProductWhenSuccess(int id, int quantity) {
+        try {
+            Connection connection = ConnectionData.connection();
+
+            PreparedStatement preparedStatement = connection.prepareStatement(Update_Quantity_Product_When_Success);
+            preparedStatement.setInt(1,quantity);
+            preparedStatement.setInt(2,id);
+
+            preparedStatement.executeUpdate();
+
+        }catch (SQLException | ClassNotFoundException e){
+            e.printStackTrace();
+        }
 
     }
 

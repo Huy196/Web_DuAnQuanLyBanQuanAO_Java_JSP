@@ -9,6 +9,7 @@ public class CartItem {
     private BigDecimal price;
     private String size;
     private int quantity;
+    private int maxQuantity;
 
     @Override
     public String toString() {
@@ -71,12 +72,21 @@ public class CartItem {
     }
 
 
-    public CartItem(int productId, String urlImage, String name, BigDecimal price, String size, int quantity) {
+    public CartItem(int productId, String urlImage, String name, BigDecimal price, String size, int quantity, int maxQuantity) {
         this.productId = productId;
         this.urlImage = urlImage;
         this.name = name;
         this.price = price;
         this.size = size;
         this.quantity = quantity;
+        this.maxQuantity = maxQuantity;
+    }
+
+    public int getMaxQuantity() {
+        return maxQuantity;
+    }
+
+    public void setMaxQuantity(int maxQuantity) {
+        this.maxQuantity = maxQuantity;
     }
 }
