@@ -14,7 +14,7 @@
 
 <body style="text-align: center">
 
-<form action="/product?action=addToCart&id=${product.id}" method="post" >
+<form action="/product?action=addToCart&id=${product.id}" method="post" onsubmit="return showSuccessMessage()">
     <div style="width: 1100px;height: 600px;display: flex">
         <div class="imageDetail" style="width: 600px;margin-top: 90px;height: 300px">
             <img src="${product.image}" width="350px" height="400px" />
@@ -25,10 +25,16 @@
             <h3 style="padding: 5px;" name="price">Giá sản phẩm: ${product.price}</h3>
             <h3 style="padding: 5px;">Số lượng: <input style="height: 25px" type="number" name="quantity" value="1" min="1" max="${product.quantity}"></h3>
             <h3 style="padding: 5px" nonce="discription">Mô tả: ${product.description}</h3>
-            <button type="submit">Thêm giỏ hàng</button>
+            <button  type="submit" >Thêm giỏ hàng</button>
         </div>
     </div>
 </form>
 
 </body>
 </html>
+<script>
+    function showSuccessMessage() {
+        alert("Sản phẩm đã được thêm thành công!");
+        return true;
+    }
+</script>

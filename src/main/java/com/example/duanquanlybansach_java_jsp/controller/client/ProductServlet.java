@@ -71,7 +71,7 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void showListHomeUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Product> products = productDAO.selectAllProduct();
+        List<Product> products = productDAO.selectAllProductUser();
         req.setAttribute("products", products);
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/view/HomeUser.jsp");

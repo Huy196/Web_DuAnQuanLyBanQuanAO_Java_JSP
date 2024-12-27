@@ -28,7 +28,7 @@
     </form>
 </div>
 <div id="content" class="centent">
-    <img src="https://gotrangtri.vn/wp-content/uploads/2020/06/b%C3%ACa3.jpg">
+    <img src="https://gotrangtri.vn/wp-content/uploads/2020/06/b%C3%ACa3.jpg" style="width: 100% ;height: 99%">
 </div>
 </body>
 </html>

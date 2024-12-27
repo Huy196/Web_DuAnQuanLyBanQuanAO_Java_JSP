@@ -14,6 +14,7 @@ public interface IDProduct {
     Product selectProduct(int id);
 
     List<Product> selectAllProduct();
+    List<Product> selectAllProductUser();
 
     List<Product> searchName(String name);
 
