@@ -19,7 +19,7 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 </head>
-<body style="width: 100%;padding: 15px">
+<body style="width: 99%;padding: 1px">
 <div style="display: flex">
     <div id="left" style="width: 20%">
         <div style="height: 700px">
@@ -41,7 +41,7 @@
         <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 20px; margin-top: -20px">
             <div style="display: flex; align-items: center; gap: 10px;">
                 <form action="products?action=search" method="post">
-                    <input id="search" name="text" type="text" placeholder="Nhập từ khóa...">
+                    <input style="margin-left: 2px" id="search" name="text" type="text" placeholder="Nhập từ khóa...">
                     <button type="submit"
                             style="width: 120px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;margin-top: 10px;text-align: center">
                         Tìm kiếm

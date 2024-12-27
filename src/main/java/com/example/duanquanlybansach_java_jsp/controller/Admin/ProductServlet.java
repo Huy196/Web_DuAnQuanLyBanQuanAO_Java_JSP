@@ -63,6 +63,7 @@ public class ProductServlet extends HttpServlet {
                 HttpSession session1 = req.getSession(false);
                 if (session1 != null) {
                     session1.removeAttribute("IDuser");
+                    session1.invalidate();
 
                     System.out.println("Khi đăng xuất" + session1.getAttribute("IDuser"));
                 }

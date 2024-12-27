@@ -18,6 +18,8 @@ public interface IDProduct {
 
     List<Product> searchName(String name);
 
+    void updateQuantityProductWhenSuccess(int id, int quantity);
+
 
     boolean updateProduct(Product product) throws SQLException, ClassNotFoundException;
 

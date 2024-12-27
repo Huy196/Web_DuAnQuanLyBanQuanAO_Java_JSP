@@ -92,7 +92,7 @@
                         <td>
                             <input style="width: 50px;text-align: center" type="number"
                                    name="quantity_${item.productId}"
-                                   value="${item.quantity}" min="1" max="${product.quantity}"
+                                   value="${item.quantity}" min="1" max="${item.maxQuantity}"
                                    onchange="updateTotal()">
                         </td>
                         <td>
